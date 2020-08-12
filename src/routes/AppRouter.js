@@ -13,11 +13,13 @@ import { Teachers } from '../pages/Teacher';
 import { Subjects } from '../pages/Subjects';
 
 import { GlobalStyle } from '../styles/GlobalStyle';
+import { Sidebar } from '../components/Sidebar';
 
 export const AppRouter = () => {
   return (
     <div>
       <GlobalStyle />
+      <Sidebar />
       <Router>
         <Home path={HOME_PATH} default />
         <Students path={STUDENT_PATH} />
