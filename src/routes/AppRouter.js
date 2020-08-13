@@ -20,12 +20,14 @@ export const AppRouter = () => {
     <div>
       <GlobalStyle />
       <Sidebar />
-      <Router>
-        <Home path={HOME_PATH} default />
-        <Students path={STUDENT_PATH} />
-        <Teachers path={TEACHER_PATH} />
-        <Subjects path={SUBJECT_PATH} />
-      </Router>
+      <div className='container'>
+        <Router>
+          <Home path={HOME_PATH} default />
+          <Students path={STUDENT_PATH} />
+          <Teachers path={TEACHER_PATH} />
+          <Subjects path={SUBJECT_PATH} />
+        </Router>
+      </div>
     </div>
   );
 };
