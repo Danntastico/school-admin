@@ -1,11 +1,14 @@
 import React from 'react';
 import { Headbar } from '../components/Headbar';
+import { Table } from '../components/Table';
 
 export const Teachers = () => {
   return (
-    <div>
+    <>
       <Headbar title='Teacher View' />
-      <h1>Teacher</h1>
-    </div>
+      <div className='pageContent'>
+        <Table></Table>
+      </div>
+    </>
   );
 };
