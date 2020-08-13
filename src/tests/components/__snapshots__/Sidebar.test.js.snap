@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Unit Test for <Sidebar /> Should show sidebar correctly (Shallow copy) 1`] = `
+<styled.nav>
+  <styled.div>
+    <styled.h2>
+      SCHOOL Admin
+    </styled.h2>
+  </styled.div>
+  <styled.div>
+    <Styled(Link)
+      to="/"
+    >
+      <MdHome />
+      Home
+    </Styled(Link)>
+    <Styled(Link)
+      to="teachers/*"
+    >
+      <MdWork />
+      Teachers
+    </Styled(Link)>
+    <Styled(Link)
+      to="students/*"
+    >
+      <MdLocalLibrary />
+      Students
+    </Styled(Link)>
+    <Styled(Link)
+      to="subjects/*"
+    >
+      <MdLibraryBooks />
+      Subjects
+    </Styled(Link)>
+  </styled.div>
+  <styled.div>
+    <button>
+      GENERATE REPORT
+    </button>
+  </styled.div>
+</styled.nav>
+`;
