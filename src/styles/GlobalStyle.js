@@ -47,4 +47,7 @@ export const GlobalStyle = createGlobalStyle`
     position: relative;
     width: calc(100% - 256px)
   }
+  .pageContent {
+    margin: 40px 60px;
+  }
 `;

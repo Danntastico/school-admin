@@ -1,13 +1,14 @@
 import React from 'react';
+import { TableContainer, TableHeader } from './styles';
 
-export const Table = ({ title, children }) => {
+export const Table = ({ title = 'Items', children }) => {
   return (
-    <div>
-      <div>
+    <TableContainer>
+      <TableHeader>
         <h2>{title}</h2>
         <button>Add New Item</button>
-      </div>
+      </TableHeader>
       <div>{children}</div>
-    </div>
+    </TableContainer>
   );
 };
