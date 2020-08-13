@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Link } from '@reach/router';
 
 export const SidebarContainer = styled.nav`
-  background-color: #333533;
+  background-color: var(--secondary-color);
   bottom: 0;
   left: 0;
   position: fixed;
@@ -12,7 +12,7 @@ export const SidebarContainer = styled.nav`
 `;
 
 export const SidebarHeader = styled.div`
-  border-bottom: 1px solid #f4f4f4;
+  border-bottom: 1px solid var(--primary-color);
   display: flex;
   align-items: center;
   height: 89px;
@@ -21,7 +21,7 @@ export const SidebarHeader = styled.div`
 `;
 
 export const Title = styled.h2`
-  color: #cfdbd5;
+  color: var(--gray-color);
   font-size: 20px;
   font-weight: 100;
 `;
@@ -46,7 +46,7 @@ export const ItemList = styled(Link)`
   padding-top: 20px;
 
   &[aria-current] {
-    color: #f5cb5c;
+    color: var(--yellow-color);
   }
   > svg {
     font-size: 30px;

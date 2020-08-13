@@ -1,6 +1,4 @@
 import React from 'react';
-import { Logo } from '../Logo';
-import { Link } from '@reach/router';
 import { MdHome, MdWork, MdLocalLibrary, MdLibraryBooks } from 'react-icons/md';
 import {
   HOME_PATH,
