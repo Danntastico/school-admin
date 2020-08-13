@@ -9,31 +9,42 @@ import {
   SUBJECT_PATH,
 } from '../../utils/constants';
 
+import {
+  SidebarContainer,
+  NavList,
+  ItemList,
+  SidebarHeader,
+  Title,
+  SidebarFooter,
+} from './styles';
+
 export const Sidebar = () => {
   return (
-    <nav>
-      <div>
-        <Logo />
-      </div>
-      <div>
-        <Link to={HOME_PATH}>
-          <MdHome /> Home
-        </Link>
-        <Link to={TEACHER_PATH}>
-          <MdWork /> Teachers
-        </Link>
-        <Link to={STUDENT_PATH}>
+    <SidebarContainer>
+      <SidebarHeader>
+        <Title>SCHOOL Admin</Title>
+      </SidebarHeader>
+      <NavList>
+        <ItemList to={HOME_PATH}>
+          <MdHome />
+          Home
+        </ItemList>
+        <ItemList to={TEACHER_PATH}>
+          <MdWork />
+          Teachers
+        </ItemList>
+        <ItemList to={STUDENT_PATH}>
           <MdLocalLibrary />
           Students
-        </Link>
-        <Link to={SUBJECT_PATH}>
+        </ItemList>
+        <ItemList to={SUBJECT_PATH}>
           <MdLibraryBooks />
           Subjects
-        </Link>
-      </div>
-      <div>
+        </ItemList>
+      </NavList>
+      <SidebarFooter>
         <button>GENERATE REPORT</button>
-      </div>
-    </nav>
+      </SidebarFooter>
+    </SidebarContainer>
   );
 };
