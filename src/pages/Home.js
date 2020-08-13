@@ -1,9 +1,10 @@
 import React from 'react';
+import { Headbar } from '../components/Headbar';
 
 export const Home = () => {
   return (
     <div>
-      <h1>Home</h1>
+      <Headbar title='home' />
     </div>
   );
 };
