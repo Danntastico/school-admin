@@ -24,3 +24,6 @@ export const TableHeader = styled.div`
     text-transform: capitalize;
   }
 `;
+export const TableContent = styled.div`
+  margin: 10px 50px;
+`;

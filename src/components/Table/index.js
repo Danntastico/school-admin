@@ -1,14 +1,15 @@
 import React from 'react';
-import { TableContainer, TableHeader } from './styles';
+import { TableContainer, TableHeader, TableContent } from './styles';
+import { Button } from '../Button';
 
 export const Table = ({ title = 'Items', children }) => {
   return (
     <TableContainer>
       <TableHeader>
         <h2>{title}</h2>
-        <button>Add New Item</button>
+        <Button>Add New Item</Button>
       </TableHeader>
-      <div>{children}</div>
+      <TableContent>{children}</TableContent>
     </TableContainer>
   );
 };
