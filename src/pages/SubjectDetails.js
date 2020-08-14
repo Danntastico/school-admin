@@ -1,7 +1,7 @@
 import React from 'react';
 import { Headbar } from '../components/Headbar';
 
-export const SubjectsDetails = () => {
+export const SubjectDetails = () => {
   return (
     <div>
       <Headbar title='Subject Details' />
