@@ -15,4 +15,7 @@ export const Btn = styled.button`
     transform: translate(0, -5px);
     box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.19);
   }
+  &[disabled] {
+    opacity: 0.4;
+  }
 `;

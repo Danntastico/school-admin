@@ -1,5 +1,5 @@
 import React from 'react';
 import { Btn } from './styles';
-export const Button = ({ label = 'Button' }) => {
-  return <Btn>{label}</Btn>;
+export const Button = ({ label = 'Button', isDisabled }) => {
+  return <Btn disabled={isDisabled}>{label}</Btn>;
 };
