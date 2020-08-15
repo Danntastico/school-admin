@@ -2,31 +2,17 @@ import styled from 'styled-components';
 
 export const FormHeader = styled.div`
   align-items: center;
-  background: rgb(83, 43, 114);
-  background: -moz-linear-gradient(
-    90deg,
-    rgba(83, 43, 114, 1) 25%,
-    rgba(66, 35, 91, 1) 100%
-  );
-  background: -webkit-linear-gradient(
-    90deg,
-    rgba(83, 43, 114, 1) 25%,
-    rgba(66, 35, 91, 1) 100%
-  );
-  background: linear-gradient(
-    90deg,
-    rgba(83, 43, 114, 1) 25%,
-    rgba(66, 35, 91, 1) 100%
-  );
-
   display: flex;
-  height: 100px;
+  height: 85px;
   padding-left: 30px;
+  width: 100%;
+  border-bottom: 1px solid var(--secondary-color);
 `;
 
 export const FormTitle = styled.h2`
-  color: white;
-  font-weight: 100;
+  color: var(--secondary-color);
+  font-size: 20px;
+  font-weight: 200;
 `;
 
 export const FormBody = styled.div`
@@ -36,4 +22,19 @@ export const FormBody = styled.div`
 
 export const FormFooter = styled.div`
   padding: 0 30px;
+`;
+
+export const EditBtn = styled.div`
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  padding: 10px;
+  border-radius: 20px;
+  margin-left: 20px;
+  transition: 0.4s;
+  :hover {
+    transform: translate(0, -5px);
+    box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.19);
+    background-color: var(--dark-color);
+    color: var(--yellow-color);
+  }
 `;

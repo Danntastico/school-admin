@@ -1,5 +1,10 @@
 import React from 'react';
-import { Container } from './styles';
+import { Container, FirstColumn } from './styles';
 export const CardContainer = ({ children }) => {
-  return <Container>{children}</Container>;
+  return (
+    <Container>
+      <FirstColumn>{children[0]}</FirstColumn>
+      <FirstColumn>{children[1]}</FirstColumn>
+    </Container>
+  );
 };

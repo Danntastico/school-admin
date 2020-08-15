@@ -10,37 +10,38 @@ export const Field = ({
   placeholder,
   value,
 }) => {
+  const fieldRender = () => {
+    switch (fieldType) {
+      case 'textarea':
+        return (
+          <textarea
+            autoComplete='off'
+            disabled={disabled}
+            name={name}
+            id={name}
+            onChange={handleInputChange}
+            value={value}
+          />
+        );
+      default:
+        return (
+          <Input
+            autoComplete='off'
+            disabled={disabled}
+            id={name}
+            name={name}
+            onChange={handleInputChange}
+            placeholder={placeholder}
+            type={inputType}
+            value={value}
+          />
+        );
+    }
+  };
   return (
     <FieldContainer>
       <Label htmlFor={name}> {label}</Label>
-      {(() => {
-        switch (fieldType) {
-          case 'textarea':
-            return (
-              <textarea
-                autoComplete='off'
-                disabled={disabled}
-                name={name}
-                id={name}
-                onChange={handleInputChange}
-                value={value}
-              />
-            );
-          default:
-            return (
-              <Input
-                autoComplete='off'
-                disabled={disabled}
-                id={name}
-                name={name}
-                onChange={handleInputChange}
-                placeholder={placeholder}
-                type={inputType}
-                value={value}
-              />
-            );
-        }
-      })()}
+      {fieldRender()}
     </FieldContainer>
   );
 };

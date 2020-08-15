@@ -5,12 +5,12 @@ import { CardContainer } from '../CardContainer';
 
 export const Table = ({ title = 'Items', children }) => {
   return (
-    <CardContainer>
+    <>
       <TableHeader>
         <h2>{title}</h2>
         <Button>Add New Item</Button>
       </TableHeader>
       <TableContent>{children}</TableContent>
-    </CardContainer>
+    </>
   );
 };

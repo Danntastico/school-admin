@@ -1,10 +1,20 @@
 import React from 'react';
-import { FormHeader, FormTitle, FormBody, FormFooter } from './styles';
-export const Form = ({ children, title, onSubmit }) => {
+import { MdEdit } from 'react-icons/md';
+import { FormHeader, FormTitle, FormBody, FormFooter, EditBtn } from './styles';
+export const Form = ({ children, title, onSubmit, isEditable }) => {
+  const editBtn = () => {
+    if (isEditable)
+      return (
+        <EditBtn>
+          <MdEdit />
+        </EditBtn>
+      );
+  };
   return (
     <form onSubmit={onSubmit}>
       <FormHeader>
         <FormTitle> {title} </FormTitle>
+        {editBtn()}
       </FormHeader>
       <FormBody>{children[0]}</FormBody>
       <FormFooter>{children[1]}</FormFooter>
