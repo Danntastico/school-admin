@@ -1,0 +1,19 @@
+import {useState, useEffect} from 'react';
+
+
+export const useInput = (initialState = {}) => {
+    const [state, setState] = useState(initialState);   
+
+    const handleInputChange = ({target}) =>  {
+        setState({
+            ...state,
+            [target.name]: target.value
+        })
+    }
+
+    const reset = () => {
+        setState(initialState)
+    }
+
+    return [state, handleInputChange, reset]
+}
