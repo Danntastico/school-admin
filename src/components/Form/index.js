@@ -1,11 +1,11 @@
 import React from 'react';
 import { MdEdit } from 'react-icons/md';
 import { FormHeader, FormTitle, FormBody, FormFooter, EditBtn } from './styles';
-export const Form = ({ children, title, onSubmit, isEditable }) => {
+export const Form = ({ children, title, onSubmit, isEditable, onClick }) => {
   const editBtn = () => {
     if (isEditable)
       return (
-        <EditBtn>
+        <EditBtn onClick={onClick}>
           <MdEdit />
         </EditBtn>
       );

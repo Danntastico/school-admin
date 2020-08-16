@@ -24,7 +24,7 @@ export const FormFooter = styled.div`
   padding: 0 30px;
 `;
 
-export const EditBtn = styled.div`
+export const EditBtn = styled.button`
   background-color: var(--secondary-color);
   color: var(--primary-color);
   padding: 10px;
