@@ -5,8 +5,7 @@ import { Form } from "../components/Form";
 import { informationFields } from "../utils/fieldsList";
 import { Field } from "../components/Field";
 import { Button } from "../components/Button";
-import { Table } from "../components/Table";
-import { TableItem } from "../components/TableItem";
+
 import { useInput } from "../hooks/useInput";
 
 export const StudentDetails = () => {
@@ -46,11 +45,6 @@ export const StudentDetails = () => {
               ))}
               <Button label="Submit" isDisabled={isDisabled} />
             </Form>
-          </>
-          <>
-            <Table>
-              <TableItem />
-            </Table>
           </>
         </CardContainer>
       </div>

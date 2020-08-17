@@ -1,8 +1,6 @@
 import React from "react";
 import { Link } from "@reach/router";
 import { Headbar } from "../components/Headbar";
-import { Table } from "../components/Table";
-import { TableItem } from "../components/TableItem";
 import { DETAIL_STUDENT_PATH } from "../utils/constants";
 import { ModalContainer } from "../components/ModalContainer";
 import { informationFields } from "../utils/fieldsList";
@@ -49,17 +47,7 @@ export const Students = () => {
   return (
     <div>
       <Headbar title="Student View" />
-      <div className="pageContent">
-        <Table
-          title="Active Students"
-          handleClick={openModal}
-          labelButton="Add New Student"
-        >
-          <Link to={DETAIL_STUDENT_PATH}>
-            <TableItem />
-          </Link>
-        </Table>
-      </div>
+      <div className="pageContent"></div>
       {modalComponent()}
     </div>
   );

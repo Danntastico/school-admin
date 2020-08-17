@@ -1,7 +1,5 @@
 import React from "react";
 import { Headbar } from "../components/Headbar";
-import { Table } from "../components/Table";
-import { TableItem } from "../components/TableItem";
 import { useInput } from "../hooks/useInput";
 import { useModal } from "../hooks/useModal";
 import { Button } from "../components/Button";
@@ -47,15 +45,7 @@ export const Teachers = () => {
   return (
     <>
       <Headbar title="Teacher View" />
-      <div className="pageContent">
-        <Table
-          title="Active Teachers"
-          handleClick={openModal}
-          labelButton="Add New Teacher"
-        >
-          <TableItem />
-        </Table>
-      </div>
+      <div className="pageContent"></div>
       {modalComponent()}
     </>
   );

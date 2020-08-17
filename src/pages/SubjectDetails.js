@@ -4,8 +4,6 @@ import { CardContainer } from "../components/CardContainer";
 import { subjectInformationFields } from "../utils/fieldsList";
 import { Field } from "../components/Field";
 import { Button } from "../components/Button";
-import { Table } from "../components/Table";
-import { TableItem } from "../components/TableItem";
 import { Form } from "../components/Form";
 
 export const SubjectDetails = () => {
@@ -21,11 +19,6 @@ export const SubjectDetails = () => {
               ))}
               <Button label="Submit" isDisabled={true} />
             </Form>
-          </>
-          <>
-            <Table>
-              <TableItem />
-            </Table>
           </>
         </CardContainer>
       </div>

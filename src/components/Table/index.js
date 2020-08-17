@@ -2,7 +2,7 @@ import React from "react";
 import { TableDescription, TableContent } from "./styles";
 import { Button } from "../Button";
 
-export const Table = ({ children, headLabels }) => {
+export const Table = ({ children }) => {
   return (
     <>
       {/* <TableDescription>
