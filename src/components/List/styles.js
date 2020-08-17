@@ -19,3 +19,9 @@ export const ListHeader = styled.div`
 export const ListBody = styled.div`
   margin: 10px 50px;
 `;
+
+export const DivList = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`;
