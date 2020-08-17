@@ -1,22 +1,19 @@
 import React from "react";
-import { TableHeader, TableContent } from "./styles";
+import { TableDescription, TableContent } from "./styles";
 import { Button } from "../Button";
 
-export const Table = ({
-  title = "Items",
-  children,
-  handleClick,
-  labelButton,
-}) => {
+export const Table = ({ children, headLabels }) => {
   return (
     <>
-      <TableHeader>
+      {/* <TableDescription>
         <h2>{title}</h2>
         <Button onClick={handleClick} label={labelButton}>
           Add New Item
         </Button>
-      </TableHeader>
-      <TableContent>{children}</TableContent>
+      </TableDescription>
+      <TableContent>{children}</TableContent> */}
+      <TableDescription>{children[0]}</TableDescription>
+      <TableContent>{children[1]}</TableContent>
     </>
   );
 };

@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-export const TableHeader = styled.div`
+export const TableDescription = styled.div`
   align-items: center;
   display: flex;
   height: 85px;
