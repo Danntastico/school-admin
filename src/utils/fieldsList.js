@@ -1,45 +1,45 @@
 export const informationFields = [
   {
-    name: 'name',
-    inputType: 'text',
-    label: 'Name',
+    name: "name",
+    inputType: "text",
+    label: "Name",
   },
   {
-    name: 'lastName',
-    inputType: 'text',
-    label: 'LastName',
+    name: "lastName",
+    inputType: "text",
+    label: "LastName",
   },
   {
-    name: 'age',
-    inputType: 'number',
-    label: 'Age',
+    name: "age",
+    inputType: "number",
+    label: "Age",
   },
   {
-    name: 'address',
-    inputType: 'text',
-    label: 'Address',
+    name: "address",
+    inputType: "text",
+    label: "Address",
   },
   {
-    name: 'cellphone',
-    inputType: 'number',
-    label: 'CellPhone',
+    name: "cellphone",
+    inputType: "number",
+    label: "CellPhone",
   },
 ];
 
 export const subjectInformationFields = [
   {
-    name: 'name',
-    inputType: 'text',
-    label: 'Name',
+    name: "name",
+    inputType: "text",
+    label: "Name",
   },
   {
-    name: 'teacher',
-    inputType: 'text',
-    label: 'Teacher',
+    name: "teacher",
+    inputType: "text",
+    label: "Teacher",
   },
   {
-    name: 'year',
-    inputType: 'number',
-    label: 'Year',
+    name: "year",
+    inputType: "number",
+    label: "Year",
   },
 ];
