@@ -1,7 +1,5 @@
 import React from "react";
-import { Link } from "@reach/router";
 import { Headbar } from "../components/Headbar";
-import { DETAIL_STUDENT_PATH } from "../utils/constants";
 import { ModalContainer } from "../components/ModalContainer";
 import { informationFields } from "../utils/fieldsList";
 import { Field } from "../components/Field";
@@ -9,6 +7,8 @@ import { Form } from "../components/Form";
 import { Button } from "../components/Button";
 import { useModal } from "../hooks/useModal";
 import { useInput } from "../hooks/useInput";
+import { List } from "../components/List";
+import { CardContainer } from "../styles/CardContainer";
 
 export const Students = () => {
   const [values, handleInputChange, reset] = useInput({
@@ -47,7 +47,18 @@ export const Students = () => {
   return (
     <div>
       <Headbar title="Student View" />
-      <div className="pageContent"></div>
+      <div className="pageContent">
+        <CardContainer>
+          <List
+            title="Active Students"
+            buttonLabel="Add New Student"
+            handleAddItem={openModal}
+          >
+            
+
+          </List>
+        </CardContainer>
+      </div>
       {modalComponent()}
     </div>
   );

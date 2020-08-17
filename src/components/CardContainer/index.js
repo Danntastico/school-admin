@@ -1,6 +1,6 @@
-import React from 'react';
-import { Container, FirstColumn } from './styles';
-export const CardContainer = ({ children }) => {
+import React from "react";
+import { Container, FirstColumn } from "./styles";
+const CardContainer = ({ children }) => {
   return (
     <Container>
       <FirstColumn>{children[0]}</FirstColumn>

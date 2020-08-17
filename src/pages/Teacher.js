@@ -7,6 +7,7 @@ import { ModalContainer } from "../components/ModalContainer";
 import { Form } from "../components/Form";
 import { Field } from "../components/Field";
 import { informationFields } from "../utils/fieldsList";
+import { CardContainer } from "../styles/CardContainer";
 
 export const Teachers = () => {
   const [values, handleInputChange, reset] = useInput({
@@ -45,7 +46,9 @@ export const Teachers = () => {
   return (
     <>
       <Headbar title="Teacher View" />
-      <div className="pageContent"></div>
+      <div className="pageContent">
+        <CardContainer></CardContainer>
+      </div>
       {modalComponent()}
     </>
   );

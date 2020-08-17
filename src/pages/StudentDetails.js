@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { Headbar } from "../components/Headbar";
-import { CardContainer } from "../components/CardContainer";
+
 import { Form } from "../components/Form";
 import { informationFields } from "../utils/fieldsList";
 import { Field } from "../components/Field";
 import { Button } from "../components/Button";
 
 import { useInput } from "../hooks/useInput";
+import { CardContainer } from "../styles/CardContainer";
 
 export const StudentDetails = () => {
   const [isDisabled, setIsDisabled] = useState(true);

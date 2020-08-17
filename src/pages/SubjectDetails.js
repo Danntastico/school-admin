@@ -1,10 +1,10 @@
 import React from "react";
 import { Headbar } from "../components/Headbar";
-import { CardContainer } from "../components/CardContainer";
 import { subjectInformationFields } from "../utils/fieldsList";
 import { Field } from "../components/Field";
 import { Button } from "../components/Button";
 import { Form } from "../components/Form";
+import { CardContainer } from "../styles/CardContainer";
 
 export const SubjectDetails = () => {
   return (
