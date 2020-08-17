@@ -1,17 +1,17 @@
 import React, { useRef, useEffect } from "react";
-
+import { Modal, ModalChildren } from "./styles";
 export const ModalContainer = ({ children, modalIsOpen }) => {
   const modalRef = useRef(false);
   useEffect(() => {
     if (modalIsOpen) {
-      myModal.current.style.display = "block";
+      modalRef.current.style.display = "block";
     } else {
-      myModal.current.style.display = "none";
+      modalRef.current.style.display = "none";
     }
   }, [modalIsOpen]);
   return (
-    <div ref={myModal} className="modal">
-      <div className="modal__content">{children}</div>
-    </div>
+    <Modal ref={modalRef} className="modal">
+      <ModalChildren className="modal__content">{children}</ModalChildren>
+    </Modal>
   );
 };

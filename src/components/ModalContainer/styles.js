@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { fadeIn } from "../../styles/anitmation";
+import { slideIn } from "../../styles/anitmation";
 
 export const Modal = styled.div`
   position: fixed;
@@ -13,25 +13,16 @@ export const Modal = styled.div`
   overflow: auto;
   background-color: rgb(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.4);
-  @media screen and (min-width: $break-medium) {
-    padding-top: 50px;
-  }
-  @media screen and (min-width: $break-large) {
-    padding-top: 50px;
-  }
+  transition: 0.4s;
 `;
 
 export const ModalChildren = styled.div`
-  ${fadeIn()}
+  ${slideIn()}
   position: relative;
   margin: auto;
   padding: 0;
-  width: 80%;
-  -webkit-animation-name: animatetop;
-  -webkit-animation-duration: 0.4s;
-  animation-name: animatetop;
-  animation-duration: 0.4s;
-  @media screen and (min-width: $break-medium) {
-    width: 70%;
-  }
+  width: 480px;
+  background-color: #ffffff;
+  padding: 0px 20px 40px;
+  border-radius: 20px;
 `;
