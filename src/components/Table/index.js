@@ -1,18 +1,16 @@
 import React from "react";
-import { TableMain, TableHead, TableBody } from "./styles";
+import { TableMain, TableHead } from "./styles";
 
 export const Table = ({ headLabels = [], children }) => {
   return (
     <>
       <TableMain>
         <TableHead>
-          <tr>
-            {headLabels.map((item) => (
-              <th key={item}>{item}</th>
-            ))}
-          </tr>
+          {headLabels.map((item) => (
+            <th key={item}>{item}</th>
+          ))}
         </TableHead>
-        <TableBody>{children}</TableBody>
+        {children}
       </TableMain>
     </>
   );

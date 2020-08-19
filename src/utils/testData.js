@@ -1,4 +1,4 @@
-export const testPerson = [
+export const testPeople = [
   {
     id: "1",
     name: "Pepito",
@@ -38,5 +38,38 @@ export const testPerson = [
     id: "8",
     name: "Pepito",
     lastName: "Perez",
+  },
+];
+
+export const testSubjects = [
+  {
+    id: "1",
+    name: "Math",
+    year: 2020,
+  },
+  {
+    id: "2",
+    name: "Geography",
+    year: 2020,
+  },
+  {
+    id: "3",
+    name: "Sciences",
+    year: 2020,
+  },
+  {
+    id: "4",
+    name: "Physical Education",
+    year: 2020,
+  },
+  {
+    id: "5",
+    name: "calculus",
+    year: 2020,
+  },
+  {
+    id: "6",
+    name: "2Physics",
+    year: 2020,
   },
 ];

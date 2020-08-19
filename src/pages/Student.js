@@ -11,6 +11,8 @@ import { List } from "../components/List";
 import { CardContainer } from "../styles/CardContainer";
 import { Table } from "../components/Table";
 import { personHeadLabels } from "../utils/tableConfig";
+import { testPeople } from "../utils/testData";
+import { TableRow } from "../components/TableRow";
 
 export const Students = () => {
   const [values, handleInputChange, reset] = useInput({
@@ -56,7 +58,15 @@ export const Students = () => {
             buttonLabel="Add New Student"
             handleAddItem={openModal}
           >
-            <Table headLabels={personHeadLabels} />
+            <Table headLabels={personHeadLabels}>
+              {testPeople.map((item) => (
+                <TableRow>
+                  {Object.values(item).map((i) => (
+                    <td key={i}>{i}</td>
+                  ))}
+                </TableRow>
+              ))}
+            </Table>
           </List>
         </CardContainer>
       </div>
