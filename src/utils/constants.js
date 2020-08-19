@@ -9,3 +9,8 @@ export const SUBJECT_PATH = "subjects";
 export const DETAIL_SUBJECT_PATH = "/subject/detail/";
 export const DETAIL_STUDENT_PATH = "/student/detail/";
 export const DETAIL_TEACHER_PATH = "/teacher/detail/";
+
+//Action Types
+export const GET_ALL_STUDENTS = "GET_ALL_STUDENTS";
+export const GET_ALL_TEACHERS = "GET_ALL_TEACHERS";
+export const GET_ALL_COURSES = "GET_ALL_COURSES";

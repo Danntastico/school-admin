@@ -1,4 +1,4 @@
-import { types } from "../../utils/types";
+import { GET_ALL_COURSES } from "../../utils/constants";
 
 const initialState = {
   data: [],
@@ -6,7 +6,7 @@ const initialState = {
 
 export const coursesReducer = (state = initialState, action) => {
   switch (action.type) {
-    case types.getAllCourses:
+    case GET_ALL_COURSES:
       return {
         ...state,
         data: action.payload,

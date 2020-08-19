@@ -1,4 +1,4 @@
-const { types } = require("../../utils/types");
+import { GET_ALL_TEACHERS } from "../../utils/constants";
 
 const initialState = {
   data: [],
@@ -6,7 +6,7 @@ const initialState = {
 
 export const teachersReducer = (state = initialState, action) => {
   switch (action.type) {
-    case types.getAllTeachers:
+    case GET_ALL_TEACHERS:
       return {
         ...state,
         data: action.payload,
