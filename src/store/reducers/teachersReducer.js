@@ -13,6 +13,6 @@ export const teachersReducer = (state = initialState, action) => {
       };
 
     default:
-      return { ...state };
+      return state;
   }
 };
