@@ -1,10 +1,14 @@
-import React from 'react';
-import { AppRouter } from './routes/AppRouter';
+import React from "react";
+import { AppRouter } from "./routes/AppRouter";
+import { Provider } from "react-redux";
+import { store } from "./store";
+import { getAllStudents } from "./utils/services/api";
 
 export const App = () => {
+  getAllStudents().then((res) => console.log(res));
   return (
-    <div>
+    <Provider store={store}>
       <AppRouter />
-    </div>
+    </Provider>
   );
 };
