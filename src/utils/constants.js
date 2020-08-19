@@ -1,3 +1,6 @@
+//Backend URL
+export const BACKEND_URL = "https://backendschooladmin.azurewebsites.net";
+
 //Router paths
 export const HOME_PATH = "/";
 export const STUDENT_PATH = "students";
