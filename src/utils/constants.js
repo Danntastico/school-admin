@@ -1,5 +1,5 @@
 //Backend URL
-export const BACKEND_URL = "https://schooladminapi.azurewebsites.net/";
+export const BACKEND_URL = "https://schooladminapi.azurewebsites.net";
 
 //Router paths
 export const HOME_PATH = "/";

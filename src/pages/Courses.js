@@ -4,11 +4,9 @@ import { Headbar } from "../components/Headbar";
 import { useInput } from "../hooks/useInput";
 import { useModal } from "../hooks/useModal";
 import { Button } from "../components/Button";
-import { ModalContainer } from "../components/ModalContainer";
+import { Modal } from "../components/Modal";
 import { Form } from "../components/Form";
 import { Field } from "../components/Field";
-import { List } from "../components/List";
-import { CardContainer } from "../styles/CardContainer";
 
 export const Courses = () => {
   const [values, handleInputChange, reset] = useInput({
@@ -25,7 +23,7 @@ export const Courses = () => {
 
   const modalComponent = () =>
     isModalOpen && (
-      <ModalContainer modalIsOpen={isModalOpen}>
+      <Modal modalIsOpen={isModalOpen}>
         <Form title="Register a new course">
           <Field
             key={values.name}
@@ -37,20 +35,12 @@ export const Courses = () => {
           />
           {buttons()}
         </Form>
-      </ModalContainer>
+      </Modal>
     );
   return (
     <div>
       <Headbar title="course View" />
-      <div className="pageContent">
-        <CardContainer>
-          <List
-            title="Active courses"
-            buttonLabel="Add New course"
-            handleAddItem={openModal}
-          ></List>
-        </CardContainer>
-      </div>
+      <div className="pageContent"></div>
       {modalComponent()}
     </div>
   );

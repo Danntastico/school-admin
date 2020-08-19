@@ -1,6 +1,6 @@
 import React from "react";
 import { Headbar } from "../components/Headbar";
-import { ModalContainer } from "../components/ModalContainer";
+import { Modal } from "../components/Modal";
 import { informationFields } from "../utils/fieldsList";
 import { Field } from "../components/Field";
 import { Form } from "../components/Form";
@@ -9,48 +9,32 @@ import { useModal } from "../hooks/useModal";
 import { useInput } from "../hooks/useInput";
 import { ListOfItems } from "../containers/ListOfItems";
 import { STUDENT_PATH } from "../utils/constants";
-
+import { CardContainer } from "../styles/CardContainer";
+import { ModalContainer } from "../containers/ModalContainer";
 export const Students = () => {
-  const [values, handleInputChange, reset] = useInput({
+  const [isModalOpen, openModal, closeModal] = useModal();
+  const initialState = {
     name: "",
     lastName: "",
     age: 0,
     address: "",
     cellphone: "",
-  });
-
-  const [isModalOpen, openModal, closeModal] = useModal({ reset });
-
-  const buttons = () => (
-    <>
-      <Button label="Submit" /> <Button onClick={closeModal} label="Cancel" />
-    </>
-  );
-
-  const modalComponent = () =>
-    isModalOpen && (
-      <ModalContainer modalIsOpen={isModalOpen}>
-        <Form title="Register a new teacher">
-          {informationFields.map((field) => (
-            <Field
-              key={field.name}
-              value={values[field.name]}
-              handleInputChange={handleInputChange}
-              {...field}
-            />
-          ))}
-          {buttons()}
-        </Form>
-      </ModalContainer>
-    );
+  };
 
   return (
     <>
       <Headbar title="Student View" />
       <div className="pageContent">
-        <ListOfItems openModal={openModal} PATH={STUDENT_PATH} />
+        <CardContainer>
+          <ListOfItems openModal={openModal} PATH={STUDENT_PATH} />
+        </CardContainer>
       </div>
-      {modalComponent()}
+      <ModalContainer
+        initialState={initialState}
+        isModalOpen={isModalOpen}
+        closeModal={closeModal}
+        fields={informationFields}
+      />
     </>
   );
 };

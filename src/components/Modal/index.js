@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from "react";
-import { Modal, ModalChildren } from "./styles";
-export const ModalContainer = ({ children, modalIsOpen }) => {
+import { Modal as ModalStyled, ModalChildren } from "./styles";
+export const Modal = ({ children, modalIsOpen }) => {
   const modalRef = useRef(false);
   useEffect(() => {
     if (modalIsOpen) {
@@ -10,8 +10,8 @@ export const ModalContainer = ({ children, modalIsOpen }) => {
     }
   }, [modalIsOpen]);
   return (
-    <Modal ref={modalRef} className="modal">
+    <ModalStyled ref={modalRef} className="modal">
       <ModalChildren className="modal__content">{children}</ModalChildren>
-    </Modal>
+    </ModalStyled>
   );
 };
