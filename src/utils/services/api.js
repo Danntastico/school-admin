@@ -20,25 +20,17 @@ export const getItemById = async (itemType = "", id = 0) => {
   return data;
 };
 
-export const postItem = async (itemType = "", body) => {
-  if (!body) {
-    throw new Error("Must pass a body!");
-  }
-  try {
-    const url = `${BACKEND_URL}/api/${itemType}/`;
+export const postItem = async (itemType = "", body = {}) => {
+  const url = `${BACKEND_URL}/api/${itemType}/`;
 
-    const params = {
-      method: "POST",
-      body: JSON.stringify(body),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
-    const apiInstance = await fetch(url, params);
-    const data = await apiInstance.json();
+  const params = {
+    method: "POST",
+    body: JSON.stringify(body),
+    headers: { Accept: "application/json", "Content-Type": "application/json" },
+    credentials: "omit",
+  };
+  const apiInstance = await fetch(url, params);
 
-    return data;
-  } catch (e) {
-    console.Error(e);
-  }
+  const data = await apiInstance.json();
+  return data;
 };

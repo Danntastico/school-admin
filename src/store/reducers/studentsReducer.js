@@ -13,6 +13,7 @@ export const studentsReducer = (state = initialState, action) => {
       };
 
     case POST_NEW_STUDENT:
+      console.log(action.payload);
       return {
         ...state,
         data: [...state.data, action.payload],
