@@ -6,9 +6,9 @@ export const HOME_PATH = "/";
 export const STUDENT_PATH = "students";
 export const TEACHER_PATH = "teachers";
 export const COURSE_PATH = "courses";
-export const DETAIL_COURSE_PATH = "/course/detail/";
-export const DETAIL_STUDENT_PATH = "/student/detail/";
-export const DETAIL_TEACHER_PATH = "/teacher/detail/";
+export const DETAIL_COURSE_PATH = "/courses/detail/:id";
+export const DETAIL_STUDENT_PATH = "/students/detail/:id";
+export const DETAIL_TEACHER_PATH = "/teachers/detail/:id";
 
 //Action Types
 export const GET_ALL_STUDENTS = "GET_ALL_STUDENTS";
