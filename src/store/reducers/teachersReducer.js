@@ -1,4 +1,4 @@
-import { GET_ALL_TEACHERS } from "../../utils/constants";
+import { GET_ALL_TEACHERS, POST_NEW_TEACHER } from "../../utils/constants";
 
 const initialState = {
   data: [],
@@ -10,6 +10,12 @@ export const teachersReducer = (state = initialState, action) => {
       return {
         ...state,
         data: action.payload,
+      };
+
+    case POST_NEW_TEACHER:
+      return {
+        ...state,
+        data: [...state.data, action.payload],
       };
 
     default:
