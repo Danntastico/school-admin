@@ -5,5 +5,5 @@ export const get = (data, actionType) => ({
 
 export const post = (item, actionType) => ({
   type: actionType,
-  paylad: item,
+  payload: item,
 });

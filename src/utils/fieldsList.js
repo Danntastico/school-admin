@@ -1,6 +1,6 @@
 export const informationFields = [
   {
-    name: "name",
+    name: "firstName",
     inputType: "text",
     label: "Name",
   },
