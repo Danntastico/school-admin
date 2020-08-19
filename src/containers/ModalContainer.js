@@ -4,12 +4,11 @@ import { Form } from "../components/Form";
 import { Field } from "../components/Field";
 import { useInput } from "../hooks/useInput";
 import { Button } from "../components/Button";
-import { useModal } from "../hooks/useModal";
 
 export const ModalContainer = ({
   isModalOpen,
   closeModal,
-  fields,
+  fields = [],
   initialState,
 }) => {
   const [values, handleInputChange, reset] = useInput(initialState);

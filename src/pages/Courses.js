@@ -9,11 +9,13 @@ import { COURSE_PATH, DETAIL_COURSE_PATH } from "../utils/constants";
 
 export const Courses = () => {
   const [isModalOpen, openModal, closeModal] = useModal();
-  const courseFields = {
-    name: "name",
-    inputType: "text",
-    label: "Name",
-  };
+  const courseFields = [
+    {
+      name: "name",
+      inputType: "text",
+      label: "Name",
+    },
+  ];
   const initialState = {
     name: "",
   };
