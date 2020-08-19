@@ -15,22 +15,22 @@ exports[`Unit Test for <Sidebar /> Should show sidebar correctly (Shallow copy) 
       Home
     </Styled(Link)>
     <Styled(Link)
-      to="teachers/*"
+      to="teachers"
     >
       <MdWork />
       Teachers
     </Styled(Link)>
     <Styled(Link)
-      to="students/*"
+      to="students"
     >
       <MdLocalLibrary />
       Students
     </Styled(Link)>
     <Styled(Link)
-      to="subjects/*"
+      to="courses"
     >
       <MdLibraryBooks />
-      Subjects
+      courses
     </Styled(Link)>
   </styled.div>
   <styled.div>

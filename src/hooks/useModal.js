@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export const useModal = ({ reset }) => {
+export const useModal = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => {
@@ -8,7 +8,6 @@ export const useModal = ({ reset }) => {
   };
   const closeModal = () => {
     setIsModalOpen(false);
-    reset();
   };
 
   return [isModalOpen, openModal, closeModal];

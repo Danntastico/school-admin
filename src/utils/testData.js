@@ -41,7 +41,7 @@ export const testPeople = [
   },
 ];
 
-export const testSubjects = [
+export const testcourses = [
   {
     id: "1",
     name: "Math",

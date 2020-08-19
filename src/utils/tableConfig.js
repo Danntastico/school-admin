@@ -1,2 +1,2 @@
 export const personHeadLabels = ["ID", "Name", "LastName"];
-export const subjectHeadLabels = ["Id", "Name", "Year"];
+export const courseHeadLabels = ["Id", "Name", "Year"];
