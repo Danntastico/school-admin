@@ -20,7 +20,9 @@ export const ListOfItems = ({ openModal, PATH, DETAIL_PATH, isCourse }) => {
       ))
     : data.map((items) => (
         <Item to={`detail/${items.id}`} key={items.id}>
+          <p>{items["id"]}</p>
           <p>{items["firstName"]}</p>
+          <p>{items["lastName"]}</p>
         </Item>
       ));
   return (
