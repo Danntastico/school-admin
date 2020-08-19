@@ -1,9 +1,5 @@
 import React from "react";
-import { Link } from "@reach/router";
 import { Headbar } from "../components/Headbar";
-import { Table } from "../components/Table";
-import { TableItem } from "../components/TableItem";
-import { DETAIL_STUDENT_PATH } from "../utils/constants";
 import { ModalContainer } from "../components/ModalContainer";
 import { informationFields } from "../utils/fieldsList";
 import { Field } from "../components/Field";
@@ -11,6 +7,12 @@ import { Form } from "../components/Form";
 import { Button } from "../components/Button";
 import { useModal } from "../hooks/useModal";
 import { useInput } from "../hooks/useInput";
+import { List } from "../components/List";
+import { CardContainer } from "../styles/CardContainer";
+import { Table } from "../components/Table";
+import { personHeadLabels } from "../utils/tableConfig";
+import { testPeople } from "../utils/testData";
+import { TableRow } from "../components/TableRow";
 
 export const Students = () => {
   const [values, handleInputChange, reset] = useInput({
@@ -50,15 +52,23 @@ export const Students = () => {
     <div>
       <Headbar title="Student View" />
       <div className="pageContent">
-        <Table
-          title="Active Students"
-          handleClick={openModal}
-          labelButton="Add New Student"
-        >
-          <Link to={DETAIL_STUDENT_PATH}>
-            <TableItem />
-          </Link>
-        </Table>
+        <CardContainer>
+          <List
+            title="Active Students"
+            buttonLabel="Add New Student"
+            handleAddItem={openModal}
+          >
+            <Table headLabels={personHeadLabels}>
+              {testPeople.map((item) => (
+                <TableRow>
+                  {Object.values(item).map((i) => (
+                    <td key={i}>{i}</td>
+                  ))}
+                </TableRow>
+              ))}
+            </Table>
+          </List>
+        </CardContainer>
       </div>
       {modalComponent()}
     </div>

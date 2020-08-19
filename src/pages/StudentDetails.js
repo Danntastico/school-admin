@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { Headbar } from "../components/Headbar";
-import { CardContainer } from "../components/CardContainer";
+
 import { Form } from "../components/Form";
 import { informationFields } from "../utils/fieldsList";
 import { Field } from "../components/Field";
 import { Button } from "../components/Button";
-import { Table } from "../components/Table";
-import { TableItem } from "../components/TableItem";
+
 import { useInput } from "../hooks/useInput";
+import { CardContainer } from "../styles/CardContainer";
 
 export const StudentDetails = () => {
   const [isDisabled, setIsDisabled] = useState(true);
@@ -46,11 +46,6 @@ export const StudentDetails = () => {
               ))}
               <Button label="Submit" isDisabled={isDisabled} />
             </Form>
-          </>
-          <>
-            <Table>
-              <TableItem />
-            </Table>
           </>
         </CardContainer>
       </div>

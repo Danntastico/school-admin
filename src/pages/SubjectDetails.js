@@ -1,12 +1,10 @@
 import React from "react";
 import { Headbar } from "../components/Headbar";
-import { CardContainer } from "../components/CardContainer";
 import { subjectInformationFields } from "../utils/fieldsList";
 import { Field } from "../components/Field";
 import { Button } from "../components/Button";
-import { Table } from "../components/Table";
-import { TableItem } from "../components/TableItem";
 import { Form } from "../components/Form";
+import { CardContainer } from "../styles/CardContainer";
 
 export const SubjectDetails = () => {
   return (
@@ -21,11 +19,6 @@ export const SubjectDetails = () => {
               ))}
               <Button label="Submit" isDisabled={true} />
             </Form>
-          </>
-          <>
-            <Table>
-              <TableItem />
-            </Table>
           </>
         </CardContainer>
       </div>

@@ -1,20 +1,16 @@
 import styled from "styled-components";
 
-export const TableDescription = styled.div`
-  align-items: center;
-  display: flex;
-  height: 85px;
-  justify-content: space-between;
-  border-bottom: 1px solid var(--secondary-color);
-  padding: 0 50px;
-
-  > h2 {
-    font-size: 20px;
-    color: var(--secondary-color);
-    font-weight: 200;
-    text-transform: capitalize;
-  }
+export const TableMain = styled.table`
+  width: 100%;
+  padding: 25px 20px;
+  border-collapse: collapse;
 `;
-export const TableContent = styled.div`
+
+export const TableHead = styled.tr`
+  border-bottom: 1px solid var(--secondary-color);
+  height: 50px;
+  text-align: center;
+`;
+export const TableBody = styled.tbody`
   margin: 10px 50px;
 `;

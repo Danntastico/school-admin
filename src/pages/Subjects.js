@@ -1,13 +1,20 @@
 import React from "react";
+
 import { Headbar } from "../components/Headbar";
-import { Table } from "../components/Table";
-import { TableItem } from "../components/TableItem";
 import { useInput } from "../hooks/useInput";
 import { useModal } from "../hooks/useModal";
 import { Button } from "../components/Button";
 import { ModalContainer } from "../components/ModalContainer";
 import { Form } from "../components/Form";
 import { Field } from "../components/Field";
+import { List } from "../components/List";
+import { Table } from "../components/Table";
+import { CardContainer } from "../styles/CardContainer";
+import { subjectHeadLabels } from "../utils/tableConfig";
+import { testSubjects } from "../utils/testData";
+import { TableRow } from "../components/TableRow";
+import { DETAIL_SUBJECT_PATH } from "../utils/constants";
+import { Link } from "../styles/GlobalStyle";
 
 export const Subjects = () => {
   const [values, handleInputChange, reset] = useInput({
@@ -42,13 +49,25 @@ export const Subjects = () => {
     <div>
       <Headbar title="Subject View" />
       <div className="pageContent">
-        <Table
-          title="Active Teachers"
-          handleClick={openModal}
-          labelButton="Add New Subject"
-        >
-          <TableItem />
-        </Table>
+        <CardContainer>
+          <List
+            title="Active Subjects"
+            buttonLabel="Add New Subject"
+            handleAddItem={openModal}
+          >
+            <Table headLabels={subjectHeadLabels}>
+              {testSubjects.map((item) => (
+                <Link to={DETAIL_SUBJECT_PATH}>
+                  <TableRow>
+                    {Object.values(item).map((i) => (
+                      <td key={i}>{i}</td>
+                    ))}
+                  </TableRow>
+                </Link>
+              ))}
+            </Table>
+          </List>
+        </CardContainer>
       </div>
       {modalComponent()}
     </div>

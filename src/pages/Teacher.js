@@ -1,7 +1,5 @@
 import React from "react";
 import { Headbar } from "../components/Headbar";
-import { Table } from "../components/Table";
-import { TableItem } from "../components/TableItem";
 import { useInput } from "../hooks/useInput";
 import { useModal } from "../hooks/useModal";
 import { Button } from "../components/Button";
@@ -9,6 +7,12 @@ import { ModalContainer } from "../components/ModalContainer";
 import { Form } from "../components/Form";
 import { Field } from "../components/Field";
 import { informationFields } from "../utils/fieldsList";
+import { CardContainer } from "../styles/CardContainer";
+import { List } from "../components/List";
+import { personHeadLabels } from "../utils/tableConfig";
+import { TableRow } from "../components/TableRow";
+import { testPeople } from "../utils/testData";
+import { Table } from "../components/Table";
 
 export const Teachers = () => {
   const [values, handleInputChange, reset] = useInput({
@@ -48,13 +52,23 @@ export const Teachers = () => {
     <>
       <Headbar title="Teacher View" />
       <div className="pageContent">
-        <Table
-          title="Active Teachers"
-          handleClick={openModal}
-          labelButton="Add New Teacher"
-        >
-          <TableItem />
-        </Table>
+        <CardContainer>
+          <List
+            title="Active Students"
+            buttonLabel="Add New Student"
+            handleAddItem={openModal}
+          >
+            <Table headLabels={personHeadLabels}>
+              {testPeople.map((item) => (
+                <TableRow>
+                  {Object.values(item).map((i) => (
+                    <td key={i}>{i}</td>
+                  ))}
+                </TableRow>
+              ))}
+            </Table>
+          </List>
+        </CardContainer>
       </div>
       {modalComponent()}
     </>

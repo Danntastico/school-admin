@@ -1,4 +1,5 @@
-import { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle } from "styled-components";
+import { Link as LinkRouter } from "@reach/router";
 
 export const GlobalStyle = createGlobalStyle`
 
@@ -50,4 +51,8 @@ export const GlobalStyle = createGlobalStyle`
   .pageContent {
     margin: 40px 60px;
   }
+`;
+
+export const Link = styled(LinkRouter)`
+  font-style: none;
 `;
