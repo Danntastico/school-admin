@@ -1,47 +1,37 @@
 import React from "react";
 
 import { Headbar } from "../components/Headbar";
-import { useInput } from "../hooks/useInput";
 import { useModal } from "../hooks/useModal";
-import { Button } from "../components/Button";
-import { Modal } from "../components/Modal";
-import { Form } from "../components/Form";
-import { Field } from "../components/Field";
+import { ModalContainer } from "../containers/ModalContainer";
+import { CardContainer } from "../styles/CardContainer";
+import { ListOfItems } from "../containers/ListOfItems";
+import { COURSE_PATH } from "../utils/constants";
 
 export const Courses = () => {
-  const [values, handleInputChange, reset] = useInput({
+  const [isModalOpen, openModal, closeModal] = useModal();
+  const courseFields = {
+    name: "name",
+    inputType: "text",
+    label: "Name",
+  };
+  const initialState = {
     name: "",
-  });
+  };
 
-  const [isModalOpen, openModal, closeModal] = useModal({ reset });
-
-  const buttons = () => (
-    <>
-      <Button label="Submit" /> <Button onClick={closeModal} label="Cancel" />
-    </>
-  );
-
-  const modalComponent = () =>
-    isModalOpen && (
-      <Modal modalIsOpen={isModalOpen}>
-        <Form title="Register a new course">
-          <Field
-            key={values.name}
-            value={values[values.name]}
-            handleInputChange={handleInputChange}
-            name={values.name}
-            inputType="text"
-            label="Name"
-          />
-          {buttons()}
-        </Form>
-      </Modal>
-    );
   return (
     <div>
       <Headbar title="course View" />
-      <div className="pageContent"></div>
-      {modalComponent()}
+      <div className="pageContent">
+        <CardContainer>
+          <ListOfItems openModal={openModal} PATH={COURSE_PATH} isCourse />
+        </CardContainer>
+      </div>
+      <ModalContainer
+        initialState={initialState}
+        isModalOpen={isModalOpen}
+        closeModal={closeModal}
+        fields={courseFields}
+      />
     </div>
   );
 };
