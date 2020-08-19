@@ -13,6 +13,7 @@ import { Table } from "../components/Table";
 import { personHeadLabels } from "../utils/tableConfig";
 import { testPeople } from "../utils/testData";
 import { TableRow } from "../components/TableRow";
+import { ListOfStudents } from "../containers/ListOfStudents";
 
 export const Students = () => {
   const [values, handleInputChange, reset] = useInput({
@@ -49,7 +50,8 @@ export const Students = () => {
     );
 
   return (
-    <div>
+    <>
+      {/* <div>
       <Headbar title="Student View" />
       <div className="pageContent">
         <CardContainer>
@@ -71,6 +73,8 @@ export const Students = () => {
         </CardContainer>
       </div>
       {modalComponent()}
-    </div>
+    </div> */}
+      <ListOfStudents />
+    </>
   );
 };
