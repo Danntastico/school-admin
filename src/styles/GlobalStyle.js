@@ -52,7 +52,3 @@ export const GlobalStyle = createGlobalStyle`
     margin: 40px 60px;
   }
 `;
-
-export const Link = styled(LinkRouter)`
-  font-style: none;
-`;

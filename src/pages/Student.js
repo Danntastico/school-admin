@@ -8,6 +8,7 @@ import { Button } from "../components/Button";
 import { useModal } from "../hooks/useModal";
 import { useInput } from "../hooks/useInput";
 import { ListOfItems } from "../containers/ListOfItems";
+import { STUDENT_PATH } from "../utils/constants";
 
 export const Students = () => {
   const [values, handleInputChange, reset] = useInput({
@@ -47,7 +48,7 @@ export const Students = () => {
     <>
       <Headbar title="Student View" />
       <div className="pageContent">
-        <ListOfItems />
+        <ListOfItems openModal={openModal} PATH={STUDENT_PATH} />
       </div>
       {modalComponent()}
     </>
