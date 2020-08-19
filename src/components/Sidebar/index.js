@@ -1,11 +1,11 @@
-import React from 'react';
-import { MdHome, MdWork, MdLocalLibrary, MdLibraryBooks } from 'react-icons/md';
+import React from "react";
+import { MdHome, MdWork, MdLocalLibrary, MdLibraryBooks } from "react-icons/md";
 import {
   HOME_PATH,
   TEACHER_PATH,
   STUDENT_PATH,
-  SUBJECT_PATH,
-} from '../../utils/constants';
+  COURSE_PATH,
+} from "../../utils/constants";
 
 import {
   SidebarContainer,
@@ -14,7 +14,7 @@ import {
   SidebarHeader,
   Title,
   SidebarFooter,
-} from './styles';
+} from "./styles";
 
 export const Sidebar = () => {
   return (
@@ -35,9 +35,9 @@ export const Sidebar = () => {
           <MdLocalLibrary />
           Students
         </ItemList>
-        <ItemList to={SUBJECT_PATH}>
+        <ItemList to={COURSE_PATH}>
           <MdLibraryBooks />
-          Subjects
+          courses
         </ItemList>
       </NavList>
       <SidebarFooter>

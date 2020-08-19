@@ -27,10 +27,10 @@ exports[`Unit Test for <Sidebar /> Should show sidebar correctly (Shallow copy) 
       Students
     </Styled(Link)>
     <Styled(Link)
-      to="subjects/*"
+      to="courses/*"
     >
       <MdLibraryBooks />
-      Subjects
+      courses
     </Styled(Link)>
   </styled.div>
   <styled.div>

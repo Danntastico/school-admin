@@ -8,11 +8,6 @@ import { Form } from "../components/Form";
 import { Field } from "../components/Field";
 import { informationFields } from "../utils/fieldsList";
 import { CardContainer } from "../styles/CardContainer";
-import { List } from "../components/List";
-import { personHeadLabels } from "../utils/tableConfig";
-import { TableRow } from "../components/TableRow";
-import { testPeople } from "../utils/testData";
-import { Table } from "../components/Table";
 
 export const Teachers = () => {
   const [values, handleInputChange, reset] = useInput({
@@ -52,23 +47,7 @@ export const Teachers = () => {
     <>
       <Headbar title="Teacher View" />
       <div className="pageContent">
-        <CardContainer>
-          <List
-            title="Active Students"
-            buttonLabel="Add New Student"
-            handleAddItem={openModal}
-          >
-            <Table headLabels={personHeadLabels}>
-              {testPeople.map((item) => (
-                <TableRow>
-                  {Object.values(item).map((i) => (
-                    <td key={i}>{i}</td>
-                  ))}
-                </TableRow>
-              ))}
-            </Table>
-          </List>
-        </CardContainer>
+        <CardContainer></CardContainer>
       </div>
       {modalComponent()}
     </>

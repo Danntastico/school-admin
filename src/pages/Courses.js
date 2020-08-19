@@ -8,15 +8,9 @@ import { ModalContainer } from "../components/ModalContainer";
 import { Form } from "../components/Form";
 import { Field } from "../components/Field";
 import { List } from "../components/List";
-import { Table } from "../components/Table";
 import { CardContainer } from "../styles/CardContainer";
-import { subjectHeadLabels } from "../utils/tableConfig";
-import { testSubjects } from "../utils/testData";
-import { TableRow } from "../components/TableRow";
-import { DETAIL_SUBJECT_PATH } from "../utils/constants";
-import { Link } from "../styles/GlobalStyle";
 
-export const Subjects = () => {
+export const Courses = () => {
   const [values, handleInputChange, reset] = useInput({
     name: "",
   });
@@ -32,7 +26,7 @@ export const Subjects = () => {
   const modalComponent = () =>
     isModalOpen && (
       <ModalContainer modalIsOpen={isModalOpen}>
-        <Form title="Register a new Subject">
+        <Form title="Register a new course">
           <Field
             key={values.name}
             value={values[values.name]}
@@ -47,26 +41,14 @@ export const Subjects = () => {
     );
   return (
     <div>
-      <Headbar title="Subject View" />
+      <Headbar title="course View" />
       <div className="pageContent">
         <CardContainer>
           <List
-            title="Active Subjects"
-            buttonLabel="Add New Subject"
+            title="Active courses"
+            buttonLabel="Add New course"
             handleAddItem={openModal}
-          >
-            <Table headLabels={subjectHeadLabels}>
-              {testSubjects.map((item) => (
-                <Link to={DETAIL_SUBJECT_PATH}>
-                  <TableRow>
-                    {Object.values(item).map((i) => (
-                      <td key={i}>{i}</td>
-                    ))}
-                  </TableRow>
-                </Link>
-              ))}
-            </Table>
-          </List>
+          ></List>
         </CardContainer>
       </div>
       {modalComponent()}

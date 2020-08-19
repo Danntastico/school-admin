@@ -26,7 +26,7 @@ export const informationFields = [
   },
 ];
 
-export const subjectInformationFields = [
+export const courseInformationFields = [
   {
     name: "name",
     inputType: "text",
