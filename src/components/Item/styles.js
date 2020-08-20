@@ -13,6 +13,7 @@ export const ItemList = styled(Link)`
   border: 0.5px solid var(--secondary-color);
   margin: 5px 0;
   transition: 0.4s;
+  cursor: pointer;
   p {
     font-size: 14px;
     font-weight: 400;

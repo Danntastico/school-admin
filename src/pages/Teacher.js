@@ -1,15 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Headbar } from "../components/Headbar";
 import { useModal } from "../hooks/useModal";
 import { informationFields } from "../utils/fieldsList";
 import { CardContainer } from "../styles/CardContainer";
-import { ListOfItems } from "../containers/ListOfItems";
 import { TEACHER_PATH } from "../utils/constants";
 import { ModalContainer } from "../containers/ModalContainer";
 import { AddItemForm } from "../containers/AddItemForm";
+import { ListOfTeachers } from "../containers/ListOfTeachers";
+import { useSelector, useDispatch } from "react-redux";
+import { startGetAllItems } from "../store/middlewares";
 
 export const Teachers = () => {
   const [isModalOpen, openModal, closeModal] = useModal();
+  const { data } = useSelector((state) => state[TEACHER_PATH]);
+  const dispatch = useDispatch();
   const initialState = {
     name: "",
     lastName: "",
@@ -17,16 +21,19 @@ export const Teachers = () => {
     address: "",
   };
 
+  useEffect(() => {
+    dispatch(startGetAllItems(TEACHER_PATH));
+  }, [TEACHER_PATH]);
+
   return (
     <>
       <Headbar title="Teacher View" />
       <div className="pageContent">
         <CardContainer>
-          <ListOfItems openModal={openModal} PATH={TEACHER_PATH} />
+          <ListOfTeachers openModal={openModal} data={data} />
         </CardContainer>
       </div>
       <ModalContainer
-        initialState={initialState}
         isModalOpen={isModalOpen}
         closeModal={closeModal}
         fields={informationFields}
@@ -38,7 +45,6 @@ export const Teachers = () => {
           isFormActive={isModalOpen}
           deactivateForm={closeModal}
           initialState={initialState}
-          ITEM_TYPE={TEACHER_PATH}
         />
       </ModalContainer>
     </>

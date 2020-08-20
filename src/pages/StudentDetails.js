@@ -29,10 +29,10 @@ export const StudentDetails = () => {
   const [isModalOpen, openModal, closeModal] = useModal();
   const [values, handleInputChange, reset] = useInput(initialState);
 
-  useEffect(() => {
+  /* useEffect(() => {
     dispatch(startGetItemById(STUDENT_PATH, id));
   }, [id]);
-
+ */
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(startPutItem(STUDENT_PATH, id, values));
@@ -45,12 +45,11 @@ export const StudentDetails = () => {
       <Headbar title="Student Details" />
       <div className="pageContent">
         <CardContainer>
-          <>
-            <ItemDetails
-              contentInfo={{ firstName, lastName, age, address }}
-              handleClickOnEdit={openModal}
-            />
-          </>
+          <ItemDetails
+            contentInfo={{ firstName, lastName, age, address }}
+            handleClickOnEdit={openModal}
+          />
+          <div></div>
         </CardContainer>
       </div>
 
@@ -65,7 +64,6 @@ export const StudentDetails = () => {
           title="Register New Student"
           handleClick={closeModal}
           isFormActive={isModalOpen}
-          initialState={initialState}
           handleInputChange={handleInputChange}
           handleSubmit={handleSubmit}
           reset={reset}

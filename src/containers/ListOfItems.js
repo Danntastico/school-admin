@@ -1,45 +1,58 @@
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { startGetAllItems } from "../store/middlewares";
+import React from "react";
+import { useDispatch } from "react-redux";
+import { startGetItemById } from "../store/middlewares";
+import { useModal } from "../hooks/useModal";
 import { List } from "../components/List";
 import { Item } from "../components/Item";
-import Loader from "react-loader-spinner";
+import { ModalContainer } from "./ModalContainer";
+import { AddItemForm } from "./AddItemForm";
 
-export const ListOfItems = ({ openModal, PATH, isCourse }) => {
-  const { data } = useSelector((state) => state[PATH]);
-
+export const ListOfItems = ({ data, PATH, openModal }) => {
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(startGetAllItems(PATH));
-  }, [PATH]);
 
-  const fillData = isCourse
-    ? data.map((items) => (
-        <Item to={`detail/${items.id}`} key={items.id}>
-          <p>{items["id"]}</p>
-          <p>{items["name"]}</p>
-          <p>{new Date(items["year"]).getFullYear()}</p>
-        </Item>
-      ))
-    : data.map((items) => (
-        <Item to={`detail/${items.id}`} key={items.id}>
-          <p>{items["id"]}</p>
-          <p>{items["firstName"]}</p>
-          <p>{items["lastName"]}</p>
-        </Item>
-      ));
+  const handleClickTarget = (id) => {
+    console.log("clicked");
+    dispatch(startGetItemById(PATH, id));
+  };
+
+  const fillData = () => {
+    switch (PATH) {
+      case "courses":
+        return data.map((items) => (
+          <Item
+            to={`detail/${items.id}`}
+            key={items.id}
+            onClick={() => handleClickTarget(items.id)}
+          >
+            <p>{items["id"]}</p>
+            <p>{items["name"]}</p>
+            <p>{new Date(items["year"]).getFullYear()}</p>
+          </Item>
+        ));
+      default:
+        return data.map((items) => (
+          <Item
+            to={`detail/${items.id}`}
+            key={items.id}
+            onClick={() => handleClickTarget(items.id)}
+          >
+            <p>{items["id"]}</p>
+            <p>{items["firstName"]}</p>
+            <p>{items["lastName"]}</p>
+          </Item>
+        ));
+    }
+  };
 
   return (
-    <List
-      title={`Active ${PATH}`}
-      buttonLabel={`Add New ${PATH}`}
-      handleAddItem={openModal}
-    >
-      {data.length === 0 ? (
-        <Loader type="Puff" color="#00BFFF" height={80} width={80} />
-      ) : (
-        fillData
-      )}
-    </List>
+    <div>
+      <List
+        title={`Active ${PATH}`}
+        buttonLabel={`Add New ${PATH}`}
+        handleOnBtnClick={openModal}
+      >
+        {fillData()}
+      </List>
+    </div>
   );
 };
