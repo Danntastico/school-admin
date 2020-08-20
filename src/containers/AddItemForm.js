@@ -17,6 +17,7 @@ export const AddItemForm = ({
 }) => {
   const [values, handleInputChange, reset] = useInput(initialState);
   const dispatch = useDispatch();
+
   const buttons = () => (
     <>
       <Button label="Submit" /> <Button onClick={handleClick} label="Cancel" />
