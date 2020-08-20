@@ -4,6 +4,7 @@ export const useInput = (initialState = {}) => {
   const [state, setState] = useState(initialState);
 
   const handleInputChange = ({ target }) => {
+    console.log(target);
     setState({
       ...state,
       [target.name]: target.value,
@@ -14,5 +15,5 @@ export const useInput = (initialState = {}) => {
     setState(initialState);
   };
 
-  return [state, handleInputChange, reset];
+  return [state, handleInputChange, reset, setState];
 };

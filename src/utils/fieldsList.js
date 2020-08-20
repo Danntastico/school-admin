@@ -19,11 +19,6 @@ export const informationFields = [
     inputType: "text",
     label: "Address",
   },
-  {
-    name: "cellphone",
-    inputType: "number",
-    label: "CellPhone",
-  },
 ];
 
 export const courseInformationFields = [

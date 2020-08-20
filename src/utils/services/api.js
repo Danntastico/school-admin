@@ -34,3 +34,20 @@ export const postItem = async (itemType = "", body = {}) => {
   const data = await apiInstance.json();
   return data;
 };
+
+export const putItem = async (itemType = "", id = 0, body = {}) => {
+  const url = `${BACKEND_URL}/api/${itemType}/${id}`;
+
+  const params = {
+    method: "PUT",
+    body: JSON.stringify(body),
+    headers: { Accept: "application/json", "Content-Type": "application/json" },
+    credentials: "omit",
+  };
+
+  const apiInstance = await fetch(url, params);
+
+  const data = await apiInstance.json();
+
+  return data;
+};
