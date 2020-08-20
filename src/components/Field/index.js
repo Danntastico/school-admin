@@ -1,5 +1,5 @@
-import React from 'react';
-import { Input, Label, FieldContainer } from './styles';
+import React from "react";
+import { Input, Label, FieldContainer } from "./styles";
 export const Field = ({
   disabled = false,
   fieldType,
@@ -9,13 +9,14 @@ export const Field = ({
   name,
   placeholder,
   value,
+  children,
 }) => {
   const fieldRender = () => {
     switch (fieldType) {
-      case 'textarea':
+      case "textarea":
         return (
           <textarea
-            autoComplete='off'
+            autoComplete="off"
             disabled={disabled}
             name={name}
             id={name}
@@ -23,10 +24,16 @@ export const Field = ({
             value={value}
           />
         );
+      case "select":
+        return (
+          <select name={name} value={value} onChange={handleInputChange}>
+            {children}
+          </select>
+        );
       default:
         return (
           <Input
-            autoComplete='off'
+            autoComplete="off"
             disabled={disabled}
             id={name}
             name={name}

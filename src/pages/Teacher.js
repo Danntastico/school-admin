@@ -1,16 +1,12 @@
 import React from "react";
 import { Headbar } from "../components/Headbar";
-import { useInput } from "../hooks/useInput";
 import { useModal } from "../hooks/useModal";
-import { Button } from "../components/Button";
-import { Modal } from "../components/Modal";
-import { Form } from "../components/Form";
-import { Field } from "../components/Field";
 import { informationFields } from "../utils/fieldsList";
 import { CardContainer } from "../styles/CardContainer";
 import { ListOfItems } from "../containers/ListOfItems";
 import { TEACHER_PATH } from "../utils/constants";
 import { ModalContainer } from "../containers/ModalContainer";
+import { AddItemForm } from "../containers/AddItemForm";
 
 export const Teachers = () => {
   const [isModalOpen, openModal, closeModal] = useModal();
@@ -35,7 +31,17 @@ export const Teachers = () => {
         isModalOpen={isModalOpen}
         closeModal={closeModal}
         fields={informationFields}
-      />
+      >
+        <AddItemForm
+          fields={informationFields}
+          title="Register New Student"
+          handleClick={closeModal}
+          isFormActive={isModalOpen}
+          deactivateForm={closeModal}
+          initialState={initialState}
+          ITEM_TYPE={TEACHER_PATH}
+        />
+      </ModalContainer>
     </>
   );
 };

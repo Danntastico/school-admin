@@ -1,4 +1,4 @@
-import { GET_ALL_COURSES } from "../../utils/constants";
+import { GET_ALL_COURSES, POST_NEW_COURSE } from "../../utils/constants";
 
 const initialState = {
   data: [],
@@ -11,7 +11,11 @@ export const coursesReducer = (state = initialState, action) => {
         ...state,
         data: action.payload,
       };
-
+    case POST_NEW_COURSE:
+      return {
+        ...state,
+        data: [...state.data, action.payload],
+      };
     default:
       return state;
   }

@@ -5,7 +5,7 @@ import { List } from "../components/List";
 import { Item } from "../components/Item";
 import Loader from "react-loader-spinner";
 
-export const ListOfItems = ({ openModal, PATH, DETAIL_PATH, isCourse }) => {
+export const ListOfItems = ({ openModal, PATH, isCourse }) => {
   const { data } = useSelector((state) => state[PATH]);
 
   const dispatch = useDispatch();
@@ -16,7 +16,9 @@ export const ListOfItems = ({ openModal, PATH, DETAIL_PATH, isCourse }) => {
   const fillData = isCourse
     ? data.map((items) => (
         <Item to={`detail/${items.id}`} key={items.id}>
+          <p>{items["id"]}</p>
           <p>{items["name"]}</p>
+          <p>{new Date(items["year"]).getFullYear()}</p>
         </Item>
       ))
     : data.map((items) => (
@@ -27,17 +29,17 @@ export const ListOfItems = ({ openModal, PATH, DETAIL_PATH, isCourse }) => {
         </Item>
       ));
 
-  if (data.length === 0) {
-    console.log("Loading");
-    return <Loader type="Puff" color="#00BFFF" height={80} width={80} />;
-  }
   return (
     <List
       title={`Active ${PATH}`}
       buttonLabel={`Add New ${PATH}`}
       handleAddItem={openModal}
     >
-      {fillData}
+      {data.length === 0 ? (
+        <Loader type="Puff" color="#00BFFF" height={80} width={80} />
+      ) : (
+        fillData
+      )}
     </List>
   );
 };
