@@ -15,7 +15,6 @@ export const Teachers = () => {
     lastName: "",
     age: 0,
     address: "",
-    cellphone: "",
   };
 
   return (
