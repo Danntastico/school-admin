@@ -1,5 +1,4 @@
-import styled, { createGlobalStyle } from "styled-components";
-import { Link as LinkRouter } from "@reach/router";
+import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
 

@@ -9,7 +9,6 @@ import { AddItemForm } from "../containers/AddItemForm";
 import { useDispatch, useSelector } from "react-redux";
 import { startPostItem, startGetAllItems } from "../store/middlewares";
 import { useInput } from "../hooks/useInput";
-import { ListOfStudents } from "../containers/ListOfStudents";
 import { ListOfItems } from "../containers/ListOfItems";
 export const Students = () => {
   const [isModalOpen, openModal, closeModal] = useModal();
@@ -32,7 +31,12 @@ export const Students = () => {
   };
   useEffect(() => {
     dispatch(startGetAllItems(STUDENT_PATH));
-  }, [STUDENT_PATH]);
+  }, [dispatch]);
+
+  const handleCloseModal = () => {
+    closeModal();
+    reset();
+  };
 
   return (
     <>
@@ -51,7 +55,7 @@ export const Students = () => {
         <AddItemForm
           fields={informationFields}
           title="Register New Student"
-          handleClick={closeModal}
+          handleClick={handleCloseModal}
           isFormActive={isModalOpen}
           initialState={initialState}
           handleInputChange={handleInputChange}

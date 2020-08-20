@@ -38,6 +38,7 @@ export const AddCourseForm = ({
     dispatch(startPostItem(ITEM_TYPE, values));
     deactivateForm();
   };
+
   return (
     <Form title={title} onSubmit={handleSubmit}>
       {fields.map((field) =>
@@ -49,7 +50,7 @@ export const AddCourseForm = ({
             {...field}
           >
             {teachersList.map((teacher) => (
-              <option value={teacher.id}>
+              <option value={teacher.id} key={teacher.id}>
                 {teacher.firstName} {teacher.lastName}
               </option>
             ))}

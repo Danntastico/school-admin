@@ -23,7 +23,7 @@ export const Teachers = () => {
 
   useEffect(() => {
     dispatch(startGetAllItems(TEACHER_PATH));
-  }, [TEACHER_PATH]);
+  }, [dispatch]);
 
   return (
     <>

@@ -1,11 +1,9 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { startGetItemById } from "../store/middlewares";
-import { useModal } from "../hooks/useModal";
+
 import { List } from "../components/List";
 import { Item } from "../components/Item";
-import { ModalContainer } from "./ModalContainer";
-import { AddItemForm } from "./AddItemForm";
 
 export const ListOfItems = ({ data, PATH, openModal }) => {
   const dispatch = useDispatch();

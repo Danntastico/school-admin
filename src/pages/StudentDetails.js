@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useParams } from "@reach/router";
 import { Headbar } from "../components/Headbar";
 import { informationFields } from "../utils/fieldsList";
@@ -6,12 +6,11 @@ import { informationFields } from "../utils/fieldsList";
 import { CardContainer } from "../styles/CardContainer";
 import { useSelector, useDispatch } from "react-redux";
 import { STUDENT_PATH } from "../utils/constants";
-import { startGetItemById, startPutItem } from "../store/middlewares";
+import { startPutItem } from "../store/middlewares";
 import { ItemDetails } from "../containers/ItemDetails";
 import { ModalContainer } from "../containers/ModalContainer";
 import { useModal } from "../hooks/useModal";
 import { AddItemForm } from "../containers/AddItemForm";
-import { EditItemForm } from "../containers/EditItemForm";
 import { useInput } from "../hooks/useInput";
 
 export const StudentDetails = () => {
@@ -29,10 +28,6 @@ export const StudentDetails = () => {
   const [isModalOpen, openModal, closeModal] = useModal();
   const [values, handleInputChange, reset] = useInput(initialState);
 
-  /* useEffect(() => {
-    dispatch(startGetItemById(STUDENT_PATH, id));
-  }, [id]);
- */
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(startPutItem(STUDENT_PATH, id, values));

@@ -1,16 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { Headbar } from "../components/Headbar";
 import { useModal } from "../hooks/useModal";
 import { ModalContainer } from "../containers/ModalContainer";
 import { CardContainer } from "../styles/CardContainer";
 import { ListOfItems } from "../containers/ListOfItems";
-import { COURSE_PATH, DETAIL_COURSE_PATH } from "../utils/constants";
+import { COURSE_PATH } from "../utils/constants";
 import { AddCourseForm } from "../containers/AddCourseForm";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { startGetAllItems } from "../store/middlewares";
 
 export const Courses = () => {
   const { data } = useSelector((state) => state[COURSE_PATH]);
+  const dispatch = useDispatch();
+  console.log(data);
   const [isModalOpen, openModal, closeModal] = useModal();
   const courseFields = [
     {
@@ -29,6 +32,9 @@ export const Courses = () => {
     year: new Date(),
     teacher_id: "",
   };
+  useEffect(() => {
+    dispatch(startGetAllItems(COURSE_PATH));
+  }, [dispatch]);
 
   return (
     <div>
