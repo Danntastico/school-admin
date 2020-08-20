@@ -41,6 +41,7 @@ export const Field = ({
             placeholder={placeholder}
             type={inputType}
             value={value}
+            required={true}
           />
         );
     }
