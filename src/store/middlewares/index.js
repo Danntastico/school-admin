@@ -1,4 +1,9 @@
-import { getAllItems, postItem, getItemById } from "../../utils/services/api";
+import {
+  getAllItems,
+  postItem,
+  getItemById,
+  putItem,
+} from "../../utils/services/api";
 import {
   STUDENT_PATH,
   TEACHER_PATH,
@@ -16,9 +21,11 @@ import {
   POST_NEW_TEACHER,
   POST_NEW_COURSE,
   POST_NEW_STUDENTCOURSE,
+  PUT_TEACHER,
+  PUT_STUDENT,
 } from "../../utils/constants";
 
-import { get, post, getId } from "../actions/crudActions";
+import { get, post, getId, put } from "../actions/crudActions";
 import Swal from "sweetalert2";
 
 export const startGetAllItems = (itemType) => async (dispatch) => {
@@ -84,6 +91,29 @@ export const startPostItem = (itemType, body) => async (dispatch) => {
     position: "center",
     icon: "success",
     title: "Saved! 😎",
+    showConfirmButton: false,
+    timer: 1500,
+  });
+};
+
+export const startPutItem = (itemType, id, body) => async (dispatch) => {
+  const response = await putItem(itemType, id, body);
+
+  switch (itemType) {
+    case STUDENT_PATH:
+      dispatch(put(response, PUT_STUDENT));
+      break;
+    case TEACHER_PATH:
+      dispatch(post(response, PUT_TEACHER));
+      break;
+    default:
+      break;
+  }
+
+  Swal.fire({
+    position: "center",
+    icon: "success",
+    title: "Updated! 😎",
     showConfirmButton: false,
     timer: 1500,
   });
