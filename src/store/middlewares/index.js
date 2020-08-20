@@ -1,4 +1,4 @@
-import { getAllItems, postItem } from "../../utils/services/api";
+import { getAllItems, postItem, getItemById } from "../../utils/services/api";
 import {
   STUDENT_PATH,
   TEACHER_PATH,
@@ -8,16 +8,20 @@ import {
   GET_ALL_TEACHERS,
   GET_ALL_COURSES,
   GET_ALL_STUDENTCOURSES,
+  GET_STUDENT_BY_ID,
+  GET_TEACHER_BY_ID,
+  GET_COURSE_BY_ID,
+  GET_STUDENTCOURSES_BY_ID,
   POST_NEW_STUDENT,
   POST_NEW_TEACHER,
   POST_NEW_COURSE,
   POST_NEW_STUDENTCOURSE,
 } from "../../utils/constants";
 
-import { get, post } from "../actions/crudActions";
+import { get, post, getId } from "../actions/crudActions";
 import Swal from "sweetalert2";
 
-export const startFetchAllItems = (itemType) => async (dispatch) => {
+export const startGetAllItems = (itemType) => async (dispatch) => {
   const items = await getAllItems(itemType);
 
   switch (itemType) {
@@ -26,7 +30,6 @@ export const startFetchAllItems = (itemType) => async (dispatch) => {
       break;
     case TEACHER_PATH:
       dispatch(get(items, GET_ALL_TEACHERS));
-
       break;
     case COURSE_PATH:
       dispatch(get(items, GET_ALL_COURSES));
@@ -39,7 +42,27 @@ export const startFetchAllItems = (itemType) => async (dispatch) => {
   }
 };
 
-export const postNewItem = (itemType, body) => async (dispatch) => {
+export const startGetItemById = (itemType, id) => async (dispatch) => {
+  const items = await getItemById(itemType, id);
+  switch (itemType) {
+    case STUDENT_PATH:
+      dispatch(getId(items, GET_STUDENT_BY_ID));
+      break;
+    case TEACHER_PATH:
+      dispatch(getId(items, GET_TEACHER_BY_ID));
+      break;
+    case COURSE_PATH:
+      dispatch(getId(items, GET_COURSE_BY_ID));
+      break;
+    case STUDENTCOURSES_PATH:
+      dispatch(getId(items, GET_STUDENTCOURSES_BY_ID));
+      break;
+    default:
+      break;
+  }
+};
+
+export const startPostItem = (itemType, body) => async (dispatch) => {
   const response = await postItem(itemType, body);
   switch (itemType) {
     case STUDENT_PATH:

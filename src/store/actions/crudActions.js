@@ -7,3 +7,8 @@ export const post = (item, actionType) => ({
   type: actionType,
   payload: item,
 });
+
+export const getId = (item, actionType) => ({
+  type: actionType,
+  payload: item,
+});

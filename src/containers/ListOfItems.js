@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { startFetchAllItems } from "../store/middlewares";
+import { startGetAllItems } from "../store/middlewares";
 import { List } from "../components/List";
 import { Item } from "../components/Item";
 import Loader from "react-loader-spinner";
@@ -10,7 +10,7 @@ export const ListOfItems = ({ openModal, PATH, isCourse }) => {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(startFetchAllItems(PATH));
+    dispatch(startGetAllItems(PATH));
   }, [PATH]);
 
   const fillData = isCourse

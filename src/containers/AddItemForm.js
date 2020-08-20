@@ -4,7 +4,7 @@ import { Field } from "../components/Field";
 import { useInput } from "../hooks/useInput";
 import { Button } from "../components/Button";
 import { useDispatch } from "react-redux";
-import { postNewItem } from "../store/middlewares";
+import { startPostItem } from "../store/middlewares";
 
 export const AddItemForm = ({
   title,
@@ -30,7 +30,7 @@ export const AddItemForm = ({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(postNewItem(ITEM_TYPE, values));
+    dispatch(startPostItem(ITEM_TYPE, values));
     deactivateForm();
   };
 

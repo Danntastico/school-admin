@@ -1,7 +1,12 @@
-import { GET_ALL_STUDENTS, POST_NEW_STUDENT } from "../../utils/constants";
+import {
+  GET_ALL_STUDENTS,
+  POST_NEW_STUDENT,
+  GET_STUDENT_BY_ID,
+} from "../../utils/constants";
 
 const initialState = {
   data: [],
+  targetItem: {},
 };
 
 export const studentsReducer = (state = initialState, action) => {
@@ -13,10 +18,14 @@ export const studentsReducer = (state = initialState, action) => {
       };
 
     case POST_NEW_STUDENT:
-      console.log(action.payload);
       return {
         ...state,
         data: [...state.data, action.payload],
+      };
+    case GET_STUDENT_BY_ID:
+      return {
+        ...state,
+        targetItem: action.payload,
       };
 
     default:

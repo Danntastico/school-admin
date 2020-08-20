@@ -4,7 +4,7 @@ import { Field } from "../components/Field";
 import { useDispatch, useSelector } from "react-redux";
 import { useInput } from "../hooks/useInput";
 import { Button } from "../components/Button";
-import { postNewItem, startFetchAllItems } from "../store/middlewares";
+import { startPostItem, startGetAllItems } from "../store/middlewares";
 import { TEACHER_PATH } from "../utils/constants";
 
 export const AddCourseForm = ({
@@ -21,7 +21,7 @@ export const AddCourseForm = ({
   const { data: teachersList } = useSelector((state) => state.teachers);
 
   useEffect(() => {
-    dispatch(startFetchAllItems(TEACHER_PATH));
+    dispatch(startGetAllItems(TEACHER_PATH));
   }, []);
   const buttons = () => (
     <>
@@ -35,7 +35,7 @@ export const AddCourseForm = ({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(postNewItem(ITEM_TYPE, values));
+    dispatch(startPostItem(ITEM_TYPE, values));
     deactivateForm();
   };
   return (

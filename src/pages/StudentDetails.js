@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useParams } from "@reach/router";
 import { Headbar } from "../components/Headbar";
 
 import { Form } from "../components/Form";
@@ -8,9 +9,13 @@ import { Button } from "../components/Button";
 
 import { useInput } from "../hooks/useInput";
 import { CardContainer } from "../styles/CardContainer";
+import { useSelector } from "react-redux";
 
 export const StudentDetails = () => {
+  const { id } = useParams();
   const [isDisabled, setIsDisabled] = useState(true);
+  const { data } = useSelector((state) => state.students);
+
   const [state, handleInputChange] = useInput({
     name: "Danilo",
     lastName: "Peña",
