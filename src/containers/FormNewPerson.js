@@ -1,7 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Form } from "../components/Form";
 import { Field } from "../components/Field";
-import { useInput } from "../hooks/useInput";
 import { Button } from "../components/Button";
 
 export const FormNewPerson = ({
