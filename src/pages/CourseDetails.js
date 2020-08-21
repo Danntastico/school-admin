@@ -1,6 +1,6 @@
 import React from "react";
 import { Headbar } from "../components/Headbar";
-import { courseInformationFields } from "../utils/fieldsList";
+
 import { Field } from "../components/Field";
 import { Button } from "../components/Button";
 import { Form } from "../components/Form";
@@ -13,12 +13,12 @@ export const CourseDetails = () => {
       <div className="pageContent">
         <CardContainer>
           <>
-            <Form title="Information" isEditable={true}>
-              {courseInformationFields.map((i) => (
+            {/* <Form title="Information" isEditable={true}>
+              {coursepersonInformationFields.map((i) => (
                 <Field key={i.name} {...i} />
               ))}
               <Button label="Submit" isDisabled={true} />
-            </Form>
+            </Form> */}
           </>
         </CardContainer>
       </div>

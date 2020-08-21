@@ -6,36 +6,37 @@ import { ModalContainer } from "../containers/ModalContainer";
 import { CardContainer } from "../styles/CardContainer";
 import { ListOfItems } from "../containers/ListOfItems";
 import { COURSE_PATH } from "../utils/constants";
-import { AddCourseForm } from "../containers/AddCourseForm";
 import { useSelector, useDispatch } from "react-redux";
 import { startGetAllItems } from "../store/middlewares";
+import { courseFields } from "../utils/fieldsList";
+import { useInput } from "../hooks/useInput";
+import { FormNewCourse } from "../containers/FormNewCourse";
 
 export const Courses = () => {
   const { courses } = useSelector((state) => state.root);
   const { data } = courses;
   const dispatch = useDispatch();
-  console.log(data);
   const [isModalOpen, openModal, closeModal] = useModal();
-  const courseFields = [
-    {
-      name: "name",
-      inputType: "text",
-      label: "Name",
-    },
-    {
-      name: "teacher_id",
-      fieldType: "select",
-      label: "Assign to a Teacher",
-    },
-  ];
+
   const initialState = {
     name: "",
     year: new Date(),
     teacher_id: "",
   };
+
+  const [values, handleInputChange, reset] = useInput(initialState);
+
   useEffect(() => {
     dispatch(startGetAllItems(COURSE_PATH));
   }, [dispatch]);
+  const handleCloseModal = () => {
+    closeModal();
+    reset();
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
 
   return (
     <div>
@@ -45,20 +46,14 @@ export const Courses = () => {
           <ListOfItems data={data} openModal={openModal} PATH={COURSE_PATH} />
         </CardContainer>
       </div>
-      <ModalContainer
-        initialState={initialState}
-        isModalOpen={isModalOpen}
-        closeModal={closeModal}
-        fields={courseFields}
-      >
-        <AddCourseForm
+      <ModalContainer initialState={initialState} isModalOpen={isModalOpen}>
+        <FormNewCourse
           fields={courseFields}
-          title="Register New Student"
-          handleClick={closeModal}
-          isFormActive={isModalOpen}
-          deactivateForm={closeModal}
-          initialState={initialState}
-          ITEM_TYPE={COURSE_PATH}
+          PATH={COURSE_PATH}
+          values={values}
+          handleInputChange={handleInputChange}
+          handleClickCancelForm={handleCloseModal}
+          handleSubmit={handleSubmit}
         />
       </ModalContainer>
     </div>

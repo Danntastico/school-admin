@@ -1,14 +1,15 @@
 import React, { useEffect } from "react";
 import { Headbar } from "../components/Headbar";
 import { useModal } from "../hooks/useModal";
-import { informationFields } from "../utils/fieldsList";
+import { personInformationFields } from "../utils/fieldsList";
 import { CardContainer } from "../styles/CardContainer";
 import { TEACHER_PATH } from "../utils/constants";
 import { ModalContainer } from "../containers/ModalContainer";
-import { AddItemForm } from "../containers/AddItemForm";
-import { ListOfTeachers } from "../containers/ListOfTeachers";
 import { useSelector, useDispatch } from "react-redux";
 import { startGetAllItems } from "../store/middlewares";
+import { ListOfItems } from "../containers/ListOfItems";
+import { useInput } from "../hooks/useInput";
+import { FormNewPerson } from "../containers/FormNewPerson";
 
 export const Teachers = () => {
   const [isModalOpen, openModal, closeModal] = useModal();
@@ -22,30 +23,38 @@ export const Teachers = () => {
     address: "",
   };
 
+  const [values, handleInputChange, reset] = useInput(initialState);
+
   useEffect(() => {
     dispatch(startGetAllItems(TEACHER_PATH));
   }, [dispatch]);
+
+  const handleCloseModal = () => {
+    closeModal();
+    reset();
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
 
   return (
     <>
       <Headbar title="Teacher View" />
       <div className="pageContent">
         <CardContainer>
-          <ListOfTeachers openModal={openModal} data={data} />
+          <ListOfItems data={data} openModal={openModal} PATH={TEACHER_PATH} />
         </CardContainer>
       </div>
-      <ModalContainer
-        isModalOpen={isModalOpen}
-        closeModal={closeModal}
-        fields={informationFields}
-      >
-        <AddItemForm
-          fields={informationFields}
-          title="Register New Student"
-          handleClick={closeModal}
-          isFormActive={isModalOpen}
-          deactivateForm={closeModal}
-          initialState={initialState}
+
+      <ModalContainer isModalOpen={isModalOpen} closeModal={closeModal}>
+        <FormNewPerson
+          values={values}
+          initialState={data}
+          fields={personInformationFields}
+          handleInputChange={handleInputChange}
+          handleClickCancelForm={handleCloseModal}
+          handleSubmit={handleSubmit}
         />
       </ModalContainer>
     </>

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useParams } from "@reach/router";
 import { Headbar } from "../components/Headbar";
-import { informationFields } from "../utils/fieldsList";
+import { personInformationFields } from "../utils/fieldsList";
 
 import { CardContainer } from "../styles/CardContainer";
 import { useSelector, useDispatch } from "react-redux";
@@ -13,9 +13,8 @@ import {
 } from "../store/middlewares";
 import { ModalContainer } from "../containers/ModalContainer";
 import { useModal } from "../hooks/useModal";
-import { AddItemForm } from "../containers/AddItemForm";
+
 import { useInput } from "../hooks/useInput";
-import { StudentCourses } from "../containers/StudentCourses";
 import { getStudentActiveCourses } from "../store/actions/crudActions";
 import { InformationCard } from "../components/InformationCard";
 import { List } from "../components/List";
@@ -97,19 +96,8 @@ export const StudentDetails = () => {
         initialState={initialState}
         isModalOpen={isModalOpen}
         closeModal={closeModal}
-        fields={informationFields}
-      >
-        <AddItemForm
-          fields={informationFields}
-          title="Register New Student"
-          handleClick={closeModal}
-          isFormActive={isModalOpen}
-          handleInputChange={handleInputChange}
-          handleSubmit={handleSubmit}
-          reset={reset}
-          values={values}
-        />
-      </ModalContainer>
+        fields={personInformationFields}
+      ></ModalContainer>
     </>
   );
 };
