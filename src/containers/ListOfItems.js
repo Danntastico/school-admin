@@ -45,14 +45,12 @@ export const ListOfItems = ({ data, PATH, openModal }) => {
   };
 
   return (
-    <div>
-      <List
-        title={`Active ${PATH}`}
-        buttonLabel={`Add New ${PATH}`}
-        handleOnBtnClick={openModal}
-      >
-        {fillData()}
-      </List>
-    </div>
+    <List
+      title={`Active ${PATH}`}
+      buttonLabel={`Add New ${PATH}`}
+      handleOnBtnClick={openModal}
+    >
+      {fillData()}
+    </List>
   );
 };

@@ -1,12 +1,9 @@
 import React, { useEffect } from "react";
-import { Headbar } from "../components/Headbar";
-import { informationFields } from "../utils/fieldsList";
-import { useModal } from "../hooks/useModal";
-import { STUDENT_PATH, STUDENTCOURSES_PATH } from "../utils/constants";
-import { CardContainer } from "../styles/CardContainer";
-import { ModalContainer } from "../containers/ModalContainer";
-import { AddItemForm } from "../containers/AddItemForm";
 import { useDispatch, useSelector } from "react-redux";
+import { Headbar } from "../components/Headbar";
+import { useModal } from "../hooks/useModal";
+import { STUDENT_PATH } from "../utils/constants";
+import { CardContainer } from "../styles/CardContainer";
 import { startPostItem, startGetAllItems } from "../store/middlewares";
 import { useInput } from "../hooks/useInput";
 import { ListOfItems } from "../containers/ListOfItems";
@@ -34,7 +31,6 @@ export const Students = () => {
 
   useEffect(() => {
     dispatch(startGetAllItems(STUDENT_PATH));
-    dispatch(startGetAllItems(STUDENTCOURSES_PATH));
   }, [dispatch]);
 
   const handleCloseModal = () => {
@@ -50,24 +46,6 @@ export const Students = () => {
           <ListOfItems data={data} openModal={openModal} PATH={STUDENT_PATH} />
         </CardContainer>
       </div>
-
-      <ModalContainer
-        isModalOpen={isModalOpen}
-        closeModal={closeModal}
-        fields={informationFields}
-      >
-        <AddItemForm
-          fields={informationFields}
-          title="Register New Student"
-          handleClick={handleCloseModal}
-          isFormActive={isModalOpen}
-          initialState={initialState}
-          handleInputChange={handleInputChange}
-          handleSubmit={handleSubmit}
-          reset={reset}
-          values={values}
-        />
-      </ModalContainer>
     </>
   );
 };

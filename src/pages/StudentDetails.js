@@ -13,9 +13,8 @@ import {
 } from "../store/middlewares";
 import { ModalContainer } from "../containers/ModalContainer";
 import { useModal } from "../hooks/useModal";
-import { AddItemForm } from "../containers/AddItemForm";
+
 import { useInput } from "../hooks/useInput";
-import { StudentCourses } from "../containers/StudentCourses";
 import { getStudentActiveCourses } from "../store/actions/crudActions";
 import { InformationCard } from "../components/InformationCard";
 import { List } from "../components/List";
@@ -98,18 +97,7 @@ export const StudentDetails = () => {
         isModalOpen={isModalOpen}
         closeModal={closeModal}
         fields={informationFields}
-      >
-        <AddItemForm
-          fields={informationFields}
-          title="Register New Student"
-          handleClick={closeModal}
-          isFormActive={isModalOpen}
-          handleInputChange={handleInputChange}
-          handleSubmit={handleSubmit}
-          reset={reset}
-          values={values}
-        />
-      </ModalContainer>
+      ></ModalContainer>
     </>
   );
 };

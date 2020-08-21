@@ -6,7 +6,6 @@ import { ModalContainer } from "../containers/ModalContainer";
 import { CardContainer } from "../styles/CardContainer";
 import { ListOfItems } from "../containers/ListOfItems";
 import { COURSE_PATH } from "../utils/constants";
-import { AddCourseForm } from "../containers/AddCourseForm";
 import { useSelector, useDispatch } from "react-redux";
 import { startGetAllItems } from "../store/middlewares";
 
@@ -50,17 +49,7 @@ export const Courses = () => {
         isModalOpen={isModalOpen}
         closeModal={closeModal}
         fields={courseFields}
-      >
-        <AddCourseForm
-          fields={courseFields}
-          title="Register New Student"
-          handleClick={closeModal}
-          isFormActive={isModalOpen}
-          deactivateForm={closeModal}
-          initialState={initialState}
-          ITEM_TYPE={COURSE_PATH}
-        />
-      </ModalContainer>
+      ></ModalContainer>
     </div>
   );
 };

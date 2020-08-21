@@ -5,10 +5,10 @@ import { informationFields } from "../utils/fieldsList";
 import { CardContainer } from "../styles/CardContainer";
 import { TEACHER_PATH } from "../utils/constants";
 import { ModalContainer } from "../containers/ModalContainer";
-import { AddItemForm } from "../containers/AddItemForm";
-import { ListOfTeachers } from "../containers/ListOfTeachers";
 import { useSelector, useDispatch } from "react-redux";
 import { startGetAllItems } from "../store/middlewares";
+import { ListOfItems } from "../containers/ListOfItems";
+import { useInput } from "../hooks/useInput";
 
 export const Teachers = () => {
   const [isModalOpen, openModal, closeModal] = useModal();
@@ -22,32 +22,30 @@ export const Teachers = () => {
     address: "",
   };
 
+  const [values, handleInputChange, reset] = useInput(initialState);
+
   useEffect(() => {
     dispatch(startGetAllItems(TEACHER_PATH));
   }, [dispatch]);
+
+  const handleCloseModal = () => {
+    closeModal();
+    reset();
+  };
 
   return (
     <>
       <Headbar title="Teacher View" />
       <div className="pageContent">
         <CardContainer>
-          <ListOfTeachers openModal={openModal} data={data} />
+          <ListOfItems data={data} openModal={openModal} PATH={TEACHER_PATH} />
         </CardContainer>
       </div>
       <ModalContainer
         isModalOpen={isModalOpen}
         closeModal={closeModal}
         fields={informationFields}
-      >
-        <AddItemForm
-          fields={informationFields}
-          title="Register New Student"
-          handleClick={closeModal}
-          isFormActive={isModalOpen}
-          deactivateForm={closeModal}
-          initialState={initialState}
-        />
-      </ModalContainer>
+      ></ModalContainer>
     </>
   );
 };
