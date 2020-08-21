@@ -1,24 +1,13 @@
 import React from "react";
-import { MdEdit } from "react-icons/md";
-import { InfoCard, InfoHead, InfoBody, InfoTitle } from "./styles";
-import { EditBtn } from "../Form/styles";
-export const InformationCard = ({
-  children,
-  handleClickOnEdit,
-  title,
-  isEditable,
-}) => {
+import { InfoCard, InfoHead, InfoBody, InfoTitle, ButtonsList } from "./styles";
+export const InformationCard = ({ children, title }) => {
   return (
     <InfoCard>
       <InfoHead>
         <InfoTitle>{title}</InfoTitle>
-        {isEditable && (
-          <EditBtn onClick={handleClickOnEdit}>
-            <MdEdit />
-          </EditBtn>
-        )}
+        <ButtonsList>{children[0]}</ButtonsList>
       </InfoHead>
-      <InfoBody>{children}</InfoBody>
+      <InfoBody>{children[1]}</InfoBody>
     </InfoCard>
   );
 };

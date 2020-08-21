@@ -13,6 +13,11 @@ export const InfoHead = styled.div`
   margin-bottom: 30px;
 `;
 
+export const ButtonsList = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
 export const InfoTitle = styled.div`
   color: var(--secondary-color);
   font-size: 22px;
