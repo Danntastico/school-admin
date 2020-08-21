@@ -72,7 +72,7 @@ export const startPostItem = (itemType, body) => async (dispatch) => {
   const response = await postItem(itemType, body);
   console.log("Body", body);
   console.log("response", response);
-  /* switch (itemType) {
+  switch (itemType) {
     case STUDENT_PATH:
       dispatch(post(response, POST_NEW_STUDENT));
       break;
@@ -94,7 +94,7 @@ export const startPostItem = (itemType, body) => async (dispatch) => {
     title: "Saved! 😎",
     showConfirmButton: false,
     timer: 1500,
-  }) */
+  });
 };
 
 export const startPutItem = (itemType, id, body) => async (dispatch) => {

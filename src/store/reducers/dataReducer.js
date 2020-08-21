@@ -6,6 +6,9 @@ import {
   GET_STUDENT_BY_ID,
   GET_TEACHER_BY_ID,
   POST_NEW_STUDENTCOURSE,
+  POST_NEW_STUDENT,
+  POST_NEW_TEACHER,
+  POST_NEW_COURSE,
 } from "../../utils/constants";
 
 const initialState = {
@@ -33,17 +36,27 @@ export const dataReducer = (state = initialState, action) => {
         ...state,
         students: {
           ...state.students,
-          data: action.payload.map((i) => ({
-            id: i.id,
-            firstName: i.firstName,
-            lastName: i.lastName,
-            age: i.age,
-            address: i.address,
-            courses: i.stuntendsCourse.map((item) => ({
-              course: item.course.name,
-              calification: item.calification,
-            })),
-          })),
+          data: action.payload
+            .map((i) => ({
+              id: i.id,
+              firstName: i.firstName,
+              lastName: i.lastName,
+              age: i.age,
+              address: i.address,
+              courses: i.stuntendsCourse.map((item) => ({
+                course: item.course.name,
+                calification: item.calification,
+              })),
+            }))
+            .sort((a, b) => a - b),
+        },
+      };
+    case POST_NEW_STUDENT:
+      return {
+        ...state,
+        students: {
+          ...state.students,
+          data: [action.payload, ...state.students.data],
         },
       };
     case GET_STUDENT_BY_ID: {
@@ -82,6 +95,14 @@ export const dataReducer = (state = initialState, action) => {
           })),
         },
       };
+    case POST_NEW_TEACHER:
+      return {
+        ...state,
+        teachers: {
+          ...state.teachers,
+          data: [action.payload, ...state.teachers.data],
+        },
+      };
     case GET_TEACHER_BY_ID:
       return {
         ...state,
@@ -117,6 +138,14 @@ export const dataReducer = (state = initialState, action) => {
               course: item.course.name,
             })),
           })),
+        },
+      };
+    case POST_NEW_COURSE:
+      return {
+        ...state,
+        courses: {
+          ...state.courses,
+          data: [action.payload, ...state.courses.data],
         },
       };
     case GET_ALL_STUDENTCOURSES:
