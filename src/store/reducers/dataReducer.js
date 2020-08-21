@@ -9,6 +9,7 @@ import {
   POST_NEW_STUDENT,
   POST_NEW_TEACHER,
   POST_NEW_COURSE,
+  GET_STUDENTCOURSES_BY_ID,
 } from "../../utils/constants";
 
 const initialState = {
@@ -26,6 +27,7 @@ const initialState = {
   },
   studentsCourses: {
     data: [],
+    activeStudentCourses: [],
   },
 };
 
@@ -161,8 +163,17 @@ export const dataReducer = (state = initialState, action) => {
           })),
         },
       };
+    case GET_STUDENTCOURSES_BY_ID:
+      return {
+        ...state,
+        studentsCourses: {
+          ...state.studentsCourses,
+          activeStudentCourses: state.studentsCourses.data.filter(
+            (i) => i.id_student === action.payload
+          ),
+        },
+      };
     case POST_NEW_STUDENTCOURSE: {
-      console.log(action.payload);
       return {
         ...state,
         studentsCourses: {
