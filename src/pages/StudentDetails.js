@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useParams } from "@reach/router";
 import { Headbar } from "../components/Headbar";
-import { informationFields } from "../utils/fieldsList";
+import { personInformationFields } from "../utils/fieldsList";
 
 import { CardContainer } from "../styles/CardContainer";
 import { useSelector, useDispatch } from "react-redux";
@@ -96,7 +96,7 @@ export const StudentDetails = () => {
         initialState={initialState}
         isModalOpen={isModalOpen}
         closeModal={closeModal}
-        fields={informationFields}
+        fields={personInformationFields}
       ></ModalContainer>
     </>
   );

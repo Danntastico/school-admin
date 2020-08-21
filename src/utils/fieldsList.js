@@ -1,4 +1,4 @@
-export const informationFields = [
+export const personInformationFields = [
   {
     name: "firstName",
     inputType: "text",
@@ -21,7 +21,7 @@ export const informationFields = [
   },
 ];
 
-export const courseInformationFields = [
+export const coursepersonInformationFields = [
   {
     name: "name",
     inputType: "text",

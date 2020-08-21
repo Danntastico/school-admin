@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Headbar } from "../components/Headbar";
 import { useModal } from "../hooks/useModal";
-import { informationFields } from "../utils/fieldsList";
+import { personInformationFields } from "../utils/fieldsList";
 import { CardContainer } from "../styles/CardContainer";
 import { TEACHER_PATH } from "../utils/constants";
 import { ModalContainer } from "../containers/ModalContainer";
@@ -51,7 +51,7 @@ export const Teachers = () => {
         <FormNewItem
           values={values}
           initialState={data}
-          fields={informationFields}
+          fields={personInformationFields}
           handleInputChange={handleInputChange}
           handleClickCancelForm={handleCloseModal}
           handleSubmit={handleSubmit}

@@ -7,6 +7,9 @@ import { CardContainer } from "../styles/CardContainer";
 import { startPostItem, startGetAllItems } from "../store/middlewares";
 import { useInput } from "../hooks/useInput";
 import { ListOfItems } from "../containers/ListOfItems";
+import { ModalContainer } from "../containers/ModalContainer";
+import { FormNewItem } from "../containers/FormNewItem";
+import { personInformationFields } from "../utils/fieldsList";
 
 const initialState = {
   firstName: "",
@@ -22,13 +25,6 @@ export const Students = () => {
 
   const [values, handleInputChange, reset] = useInput(initialState);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    dispatch(startPostItem(STUDENT_PATH, values));
-    closeModal();
-    reset();
-  };
-
   useEffect(() => {
     dispatch(startGetAllItems(STUDENT_PATH));
   }, [dispatch]);
@@ -38,6 +34,12 @@ export const Students = () => {
     reset();
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // dispatch(startPostItem(STUDENT_PATH, values));
+    closeModal();
+    reset();
+  };
   return (
     <>
       <Headbar title="Student View" />
@@ -46,6 +48,16 @@ export const Students = () => {
           <ListOfItems data={data} openModal={openModal} PATH={STUDENT_PATH} />
         </CardContainer>
       </div>
+      <ModalContainer isModalOpen={isModalOpen} closeModal={closeModal}>
+        <FormNewItem
+          values={values}
+          initialState={data}
+          fields={personInformationFields}
+          handleInputChange={handleInputChange}
+          handleClickCancelForm={handleCloseModal}
+          handleSubmit={handleSubmit}
+        />
+      </ModalContainer>
     </>
   );
 };
