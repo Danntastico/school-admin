@@ -158,8 +158,6 @@ export const dataReducer = (state = initialState, action) => {
             id_course: i.id_course,
             id_student: i.id_student,
             calification: i.calification,
-            student: i.student.name,
-            course: i.course.name,
           })),
         },
       };
