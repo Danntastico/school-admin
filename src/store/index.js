@@ -7,7 +7,7 @@ const composeEnhancers =
   compose;
 
 const reducers = combineReducers({
-  data: dataReducer,
+  root: dataReducer,
 });
 
 export const store = createStore(
