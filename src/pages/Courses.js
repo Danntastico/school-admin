@@ -8,34 +8,35 @@ import { ListOfItems } from "../containers/ListOfItems";
 import { COURSE_PATH } from "../utils/constants";
 import { useSelector, useDispatch } from "react-redux";
 import { startGetAllItems } from "../store/middlewares";
+import { courseFields } from "../utils/fieldsList";
+import { FormNewPerson } from "../containers/FormNewPerson";
+import { useInput } from "../hooks/useInput";
 
 export const Courses = () => {
   const { courses } = useSelector((state) => state.root);
   const { data } = courses;
   const dispatch = useDispatch();
-  console.log(data);
   const [isModalOpen, openModal, closeModal] = useModal();
-  const courseFields = [
-    {
-      name: "name",
-      inputType: "text",
-      label: "Name",
-    },
-    {
-      name: "teacher_id",
-      fieldType: "select",
-      label: "Assign to a Teacher",
-    },
-  ];
+
   const initialState = {
     name: "",
     year: new Date(),
     teacher_id: "",
   };
+
+  const [values, handleInputChange, reset] = useInput(initialState);
+
   useEffect(() => {
     dispatch(startGetAllItems(COURSE_PATH));
   }, [dispatch]);
+  const handleCloseModal = () => {
+    closeModal();
+    reset();
+  };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
   return (
     <div>
       <Headbar title="course View" />
@@ -44,12 +45,16 @@ export const Courses = () => {
           <ListOfItems data={data} openModal={openModal} PATH={COURSE_PATH} />
         </CardContainer>
       </div>
-      <ModalContainer
-        initialState={initialState}
-        isModalOpen={isModalOpen}
-        closeModal={closeModal}
-        fields={courseFields}
-      ></ModalContainer>
+      <ModalContainer initialState={initialState} isModalOpen={isModalOpen}>
+        <FormNewPerson
+          values={values}
+          initialState={data}
+          fields={courseFields}
+          handleInputChange={handleInputChange}
+          handleClickCancelForm={handleCloseModal}
+          handleSubmit={handleSubmit}
+        />
+      </ModalContainer>
     </div>
   );
 };

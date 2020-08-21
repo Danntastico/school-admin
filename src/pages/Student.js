@@ -8,7 +8,7 @@ import { startPostItem, startGetAllItems } from "../store/middlewares";
 import { useInput } from "../hooks/useInput";
 import { ListOfItems } from "../containers/ListOfItems";
 import { ModalContainer } from "../containers/ModalContainer";
-import { FormNewItem } from "../containers/FormNewItem";
+import { FormNewPerson } from "../containers/FormNewPerson";
 import { personInformationFields } from "../utils/fieldsList";
 
 const initialState = {
@@ -49,7 +49,7 @@ export const Students = () => {
         </CardContainer>
       </div>
       <ModalContainer isModalOpen={isModalOpen} closeModal={closeModal}>
-        <FormNewItem
+        <FormNewPerson
           values={values}
           initialState={data}
           fields={personInformationFields}

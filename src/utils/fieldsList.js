@@ -21,20 +21,15 @@ export const personInformationFields = [
   },
 ];
 
-export const coursepersonInformationFields = [
+export const courseFields = [
   {
     name: "name",
     inputType: "text",
     label: "Name",
   },
   {
-    name: "teacher",
-    inputType: "text",
-    label: "Teacher",
-  },
-  {
-    name: "year",
-    inputType: "number",
-    label: "Year",
+    name: "teacher_id",
+    fieldType: "select",
+    label: "Assign to a Teacher",
   },
 ];

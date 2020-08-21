@@ -9,7 +9,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { startGetAllItems } from "../store/middlewares";
 import { ListOfItems } from "../containers/ListOfItems";
 import { useInput } from "../hooks/useInput";
-import { FormNewItem } from "../containers/FormNewItem";
+import { FormNewPerson } from "../containers/FormNewPerson";
 
 export const Teachers = () => {
   const [isModalOpen, openModal, closeModal] = useModal();
@@ -48,7 +48,7 @@ export const Teachers = () => {
       </div>
 
       <ModalContainer isModalOpen={isModalOpen} closeModal={closeModal}>
-        <FormNewItem
+        <FormNewPerson
           values={values}
           initialState={data}
           fields={personInformationFields}

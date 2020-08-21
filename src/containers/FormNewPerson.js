@@ -4,7 +4,7 @@ import { Field } from "../components/Field";
 import { useInput } from "../hooks/useInput";
 import { Button } from "../components/Button";
 
-export const FormNewItem = ({
+export const FormNewPerson = ({
   fields,
   PATH,
   values,
