@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Headbar } from "../components/Headbar";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { startGetAllItems } from "../store/middlewares";
 import {
   STUDENTCOURSES_PATH,
@@ -10,14 +10,6 @@ import {
 } from "../utils/constants";
 
 export const Home = () => {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(startGetAllItems(STUDENT_PATH));
-    dispatch(startGetAllItems(STUDENTCOURSES_PATH));
-    dispatch(startGetAllItems(COURSE_PATH));
-    dispatch(startGetAllItems(TEACHER_PATH));
-  }, []);
   return (
     <div>
       <Headbar title="home" />
