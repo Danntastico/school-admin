@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Headbar } from "../components/Headbar";
 import { informationFields } from "../utils/fieldsList";
 import { useModal } from "../hooks/useModal";
-import { STUDENT_PATH } from "../utils/constants";
+import { STUDENT_PATH, STUDENTCOURSES_PATH } from "../utils/constants";
 import { CardContainer } from "../styles/CardContainer";
 import { ModalContainer } from "../containers/ModalContainer";
 import { AddItemForm } from "../containers/AddItemForm";
@@ -19,7 +19,7 @@ const initialState = {
 };
 export const Students = () => {
   const [isModalOpen, openModal, closeModal] = useModal();
-  const { students } = useSelector((state) => state.data);
+  const { students } = useSelector((state) => state.root);
   const { data } = students;
   const dispatch = useDispatch();
 
@@ -34,6 +34,7 @@ export const Students = () => {
 
   useEffect(() => {
     dispatch(startGetAllItems(STUDENT_PATH));
+    dispatch(startGetAllItems(STUDENTCOURSES_PATH));
   }, [dispatch]);
 
   const handleCloseModal = () => {

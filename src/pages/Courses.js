@@ -11,7 +11,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { startGetAllItems } from "../store/middlewares";
 
 export const Courses = () => {
-  const { courses } = useSelector((state) => state.data);
+  const { courses } = useSelector((state) => state.root);
   const { data } = courses;
   const dispatch = useDispatch();
   console.log(data);
