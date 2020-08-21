@@ -9,8 +9,8 @@ import { COURSE_PATH } from "../utils/constants";
 import { useSelector, useDispatch } from "react-redux";
 import { startGetAllItems } from "../store/middlewares";
 import { courseFields } from "../utils/fieldsList";
-import { FormNewPerson } from "../containers/FormNewPerson";
 import { useInput } from "../hooks/useInput";
+import { FormNewCourse } from "../containers/FormNewCourse";
 
 export const Courses = () => {
   const { courses } = useSelector((state) => state.root);
@@ -37,6 +37,7 @@ export const Courses = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
   };
+
   return (
     <div>
       <Headbar title="course View" />
@@ -46,10 +47,10 @@ export const Courses = () => {
         </CardContainer>
       </div>
       <ModalContainer initialState={initialState} isModalOpen={isModalOpen}>
-        <FormNewPerson
-          values={values}
-          initialState={data}
+        <FormNewCourse
           fields={courseFields}
+          PATH={COURSE_PATH}
+          values={values}
           handleInputChange={handleInputChange}
           handleClickCancelForm={handleCloseModal}
           handleSubmit={handleSubmit}

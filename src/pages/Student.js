@@ -18,11 +18,10 @@ const initialState = {
   address: "",
 };
 export const Students = () => {
-  const [isModalOpen, openModal, closeModal] = useModal();
+  const dispatch = useDispatch();
   const { students } = useSelector((state) => state.root);
   const { data } = students;
-  const dispatch = useDispatch();
-
+  const [isModalOpen, openModal, closeModal] = useModal();
   const [values, handleInputChange, reset] = useInput(initialState);
 
   useEffect(() => {
