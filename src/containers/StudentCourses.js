@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "../components/Button";
 import { List } from "../components/List";
 import { Item } from "../components/Item";
@@ -26,29 +26,37 @@ const assiggnationFields = [
   },
 ];
 
-export const StudentCourses = ({ studentCourses, id: id_student }) => {
+export const StudentCourses = ({ id: id_student }) => {
   const dispatch = useDispatch();
-  const { studentsCourses } = useSelector((state) => state.data);
-  const { courses } = useSelector((state) => state.data);
-  const { data: coursesList } = courses;
+  const { studentsCourses } = useSelector((state) => state.root);
+  const { courses } = useSelector((state) => state.root);
   const [isModalOpen, openModal, closeModal] = useModal();
   const [values, handleInputChange, reset] = useInput({
     id_course: "",
     calification: 0.0,
   });
 
+  const { data: coursesFullList } = courses;
+  const { activeStudentCourses } = studentsCourses;
+  console.log(coursesFullList);
+  const [studentCoursesList, setStudentCoursesList] = useState(
+    activeStudentCourses
+  );
+
   useEffect(() => {
-    dispatch(startGetAllItems(COURSE_PATH));
-  }, []);
+    setStudentCoursesList(studentCoursesList);
+  }, [activeStudentCourses]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(startPostItem(STUDENTCOURSES_PATH, { id_student, ...values }));
+    reset();
+    closeModal();
   };
 
   const handleClick = () => {
-    closeModal();
     reset();
+    closeModal();
   };
 
   return (
@@ -58,10 +66,13 @@ export const StudentCourses = ({ studentCourses, id: id_student }) => {
         buttonLabel="Add new Course"
         handleOnBtnClick={openModal}
       >
-        {!!studentCourses &&
-          studentCourses.map((studCourse) => (
-            <Item key={studCourse.course}>
-              <p>Course: {studCourse.course}</p>
+        {!!studentCoursesList &&
+          activeStudentCourses.map((studCourse) => (
+            <Item key={studCourse.id}>
+              <p>
+                Course:
+                {coursesFullList.find((i) => i.id === studCourse.id).name}
+              </p>
               <p>Final: {studCourse.calification}</p>
             </Item>
           ))}
@@ -78,7 +89,7 @@ export const StudentCourses = ({ studentCourses, id: id_student }) => {
                 {...field}
               >
                 <option> </option>
-                {coursesList.map((course) => (
+                {coursesFullList.map((course) => (
                   <option value={course.id} key={course.id}>
                     {course.name}
                   </option>

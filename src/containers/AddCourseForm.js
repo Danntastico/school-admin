@@ -18,7 +18,7 @@ export const AddCourseForm = ({
 }) => {
   const [values, handleInputChange, reset] = useInput(initialState);
   const dispatch = useDispatch();
-  const { data: teachersList } = useSelector((state) => state.teachers);
+  const { data: teachersList } = useSelector((state) => state.root);
 
   useEffect(() => {
     dispatch(startGetAllItems(TEACHER_PATH));
