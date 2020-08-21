@@ -30,7 +30,6 @@ import Swal from "sweetalert2";
 
 export const startGetAllItems = (itemType) => async (dispatch) => {
   const items = await getAllItems(itemType);
-
   switch (itemType) {
     case STUDENT_PATH:
       dispatch(get(items, GET_ALL_STUDENTS));
@@ -71,7 +70,9 @@ export const startGetItemById = (itemType, id) => async (dispatch) => {
 
 export const startPostItem = (itemType, body) => async (dispatch) => {
   const response = await postItem(itemType, body);
-  switch (itemType) {
+  console.log("Body", body);
+  console.log("response", response);
+  /* switch (itemType) {
     case STUDENT_PATH:
       dispatch(post(response, POST_NEW_STUDENT));
       break;
@@ -93,7 +94,7 @@ export const startPostItem = (itemType, body) => async (dispatch) => {
     title: "Saved! 😎",
     showConfirmButton: false,
     timer: 1500,
-  });
+  }) */
 };
 
 export const startPutItem = (itemType, id, body) => async (dispatch) => {

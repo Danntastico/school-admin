@@ -49,6 +49,7 @@ export const AddCourseForm = ({
             handleInputChange={handleInputChange}
             {...field}
           >
+            <option value={0}> </option>
             {teachersList.map((teacher) => (
               <option value={teacher.id} key={teacher.id}>
                 {teacher.firstName} {teacher.lastName}

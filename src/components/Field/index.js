@@ -10,6 +10,8 @@ export const Field = ({
   placeholder,
   value,
   children,
+  min,
+  max,
 }) => {
   const fieldRender = () => {
     switch (fieldType) {
@@ -26,7 +28,12 @@ export const Field = ({
         );
       case "select":
         return (
-          <select name={name} value={value} onChange={handleInputChange}>
+          <select
+            name={name}
+            value={value}
+            required={true}
+            onChange={handleInputChange}
+          >
             {children}
           </select>
         );
@@ -41,7 +48,10 @@ export const Field = ({
             placeholder={placeholder}
             type={inputType}
             value={value}
+            step="any"
             required={true}
+            min={min}
+            max={max}
           />
         );
     }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useParams } from "@reach/router";
 import { Headbar } from "../components/Headbar";
 import { informationFields } from "../utils/fieldsList";
@@ -6,12 +6,13 @@ import { informationFields } from "../utils/fieldsList";
 import { CardContainer } from "../styles/CardContainer";
 import { useSelector, useDispatch } from "react-redux";
 import { STUDENT_PATH } from "../utils/constants";
-import { startPutItem } from "../store/middlewares";
+import { startPutItem, startGetItemById } from "../store/middlewares";
 import { ItemDetails } from "../containers/ItemDetails";
 import { ModalContainer } from "../containers/ModalContainer";
 import { useModal } from "../hooks/useModal";
 import { AddItemForm } from "../containers/AddItemForm";
 import { useInput } from "../hooks/useInput";
+import { StudentCourses } from "../containers/StudentCourses";
 
 export const StudentDetails = () => {
   const initialState = {
@@ -20,13 +21,18 @@ export const StudentDetails = () => {
     age: 0,
     address: "",
   };
-
   const { id } = useParams();
-  const { targetItem } = useSelector((state) => state.students);
-  const { firstName, lastName, age, address } = targetItem;
   const dispatch = useDispatch();
+  const { students } = useSelector((state) => state.data);
   const [isModalOpen, openModal, closeModal] = useModal();
   const [values, handleInputChange, reset] = useInput(initialState);
+
+  useEffect(() => {
+    dispatch(startGetItemById(STUDENT_PATH, id));
+  }, [id]);
+
+  const { activeStudent } = students;
+  const { firstName, lastName, age, address, courses } = activeStudent;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -34,7 +40,18 @@ export const StudentDetails = () => {
     closeModal();
     reset();
   };
-
+  if (!activeStudent) {
+    return (
+      <>
+        <Headbar title="Student Details" />
+        <div className="pageContent">
+          <CardContainer>
+            <h1>Please, go back and select an item from the list</h1>
+          </CardContainer>
+        </div>
+      </>
+    );
+  }
   return (
     <>
       <Headbar title="Student Details" />
@@ -44,7 +61,7 @@ export const StudentDetails = () => {
             contentInfo={{ firstName, lastName, age, address }}
             handleClickOnEdit={openModal}
           />
-          <div></div>
+          <StudentCourses studentCourses={courses} id={id} />
         </CardContainer>
       </div>
 

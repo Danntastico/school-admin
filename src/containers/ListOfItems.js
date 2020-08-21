@@ -1,16 +1,18 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { startGetItemById } from "../store/middlewares";
+import { useNavigate } from "@reach/router";
 
+import { startGetItemById } from "../store/middlewares";
 import { List } from "../components/List";
 import { Item } from "../components/Item";
 
 export const ListOfItems = ({ data, PATH, openModal }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleClickTarget = (id) => {
-    console.log("clicked");
     dispatch(startGetItemById(PATH, id));
+    navigate(`${PATH}/detail/${id}`);
   };
 
   const fillData = () => {

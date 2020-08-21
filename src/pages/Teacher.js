@@ -12,7 +12,8 @@ import { startGetAllItems } from "../store/middlewares";
 
 export const Teachers = () => {
   const [isModalOpen, openModal, closeModal] = useModal();
-  const { data } = useSelector((state) => state[TEACHER_PATH]);
+  const { teachers } = useSelector((state) => state.data);
+  const { data } = teachers;
   const dispatch = useDispatch();
   const initialState = {
     name: "",

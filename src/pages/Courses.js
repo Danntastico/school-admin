@@ -11,7 +11,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { startGetAllItems } from "../store/middlewares";
 
 export const Courses = () => {
-  const { data } = useSelector((state) => state[COURSE_PATH]);
+  const { courses } = useSelector((state) => state.data);
+  const { data } = courses;
   const dispatch = useDispatch();
   console.log(data);
   const [isModalOpen, openModal, closeModal] = useModal();

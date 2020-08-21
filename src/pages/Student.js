@@ -10,18 +10,20 @@ import { useDispatch, useSelector } from "react-redux";
 import { startPostItem, startGetAllItems } from "../store/middlewares";
 import { useInput } from "../hooks/useInput";
 import { ListOfItems } from "../containers/ListOfItems";
+
+const initialState = {
+  firstName: "",
+  lastName: "",
+  age: 0,
+  address: "",
+};
 export const Students = () => {
   const [isModalOpen, openModal, closeModal] = useModal();
-  const { data } = useSelector((state) => state[STUDENT_PATH]);
-  const initialState = {
-    firstName: "",
-    lastName: "",
-    age: 0,
-    address: "",
-  };
-  const [values, handleInputChange, reset] = useInput(initialState);
-
+  const { students } = useSelector((state) => state.data);
+  const { data } = students;
   const dispatch = useDispatch();
+
+  const [values, handleInputChange, reset] = useInput(initialState);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -29,6 +31,7 @@ export const Students = () => {
     closeModal();
     reset();
   };
+
   useEffect(() => {
     dispatch(startGetAllItems(STUDENT_PATH));
   }, [dispatch]);
