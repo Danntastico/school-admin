@@ -9,6 +9,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { startGetAllItems } from "../store/middlewares";
 import { ListOfItems } from "../containers/ListOfItems";
 import { useInput } from "../hooks/useInput";
+import { FormNewItem } from "../containers/FormNewItem";
 
 export const Teachers = () => {
   const [isModalOpen, openModal, closeModal] = useModal();
@@ -33,6 +34,10 @@ export const Teachers = () => {
     reset();
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <>
       <Headbar title="Teacher View" />
@@ -41,11 +46,17 @@ export const Teachers = () => {
           <ListOfItems data={data} openModal={openModal} PATH={TEACHER_PATH} />
         </CardContainer>
       </div>
-      <ModalContainer
-        isModalOpen={isModalOpen}
-        closeModal={closeModal}
-        fields={informationFields}
-      ></ModalContainer>
+
+      <ModalContainer isModalOpen={isModalOpen} closeModal={closeModal}>
+        <FormNewItem
+          values={values}
+          initialState={data}
+          fields={informationFields}
+          handleInputChange={handleInputChange}
+          handleClickCancelForm={handleCloseModal}
+          handleSubmit={handleSubmit}
+        />
+      </ModalContainer>
     </>
   );
 };
