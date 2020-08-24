@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "../components/common/Button";
-import { List } from "../components/List";
-import { Item } from "../components/Item";
+import { List } from "../components/common/List";
+import { Item } from "../components/common/Item";
 import { useModal } from "../hooks/useModal";
 import { ModalContainer } from "./ModalContainer";
 import { AddItemForm } from "./AddItemForm";
-import { Form } from "../components/Form";
-import { Field } from "../components/Field";
+import { Form } from "../components/common/Form";
+import { Field } from "../components/common/Field";
 import { useSelector, useDispatch } from "react-redux";
 import { useInput } from "../hooks/useInput";
 import { startGetAllItems, startPostItem } from "../store/middlewares";

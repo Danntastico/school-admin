@@ -1,8 +1,8 @@
 import React from "react";
 import { Headbar } from "../components/Headbar";
-import { Form } from "../components/Form";
+import { Form } from "../components/common/Form";
 import { personInformationFields } from "../utils/fieldsList";
-import { Field } from "../components/Field";
+import { Field } from "../components/common/Field";
 import { Button } from "../components/common/Button";
 import { CardContainer } from "../styles/CardContainer";
 

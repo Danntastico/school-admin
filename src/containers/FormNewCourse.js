@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import { Form } from "../components/Form";
-import { Field } from "../components/Field";
+import { Form } from "../components/common/Form";
+import { Field } from "../components/common/Field";
 import { Button } from "../components/common/Button";
 import { useSelector, useDispatch } from "react-redux";
 import { startGetAllItems } from "../store/middlewares";

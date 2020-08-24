@@ -1,9 +1,9 @@
 import React from "react";
 import { Headbar } from "../components/Headbar";
 
-import { Field } from "../components/Field";
+import { Field } from "../components/common/Field";
 import { Button } from "../components/common/Button";
-import { Form } from "../components/Form";
+import { Form } from "../components/common/Form";
 import { CardContainer } from "../styles/CardContainer";
 
 export const CourseDetails = () => {

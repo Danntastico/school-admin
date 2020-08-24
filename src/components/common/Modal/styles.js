@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { slideIn } from "../../styles/anitmation";
+import { slideIn } from "../../../styles/anitmation";
 
 export const Modal = styled.div`
   position: fixed;
