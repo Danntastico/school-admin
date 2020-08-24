@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Form } from "../components/Form";
 import { Field } from "../components/Field";
-import { Button } from "../components/Button";
+import { Button } from "../components/common/Button";
 import { useSelector, useDispatch } from "react-redux";
 import { startGetAllItems } from "../store/middlewares";
 import { TEACHER_PATH } from "../utils/constants";

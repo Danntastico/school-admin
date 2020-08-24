@@ -1,7 +1,7 @@
 import React from "react";
 import { Form } from "../components/Form";
 import { Field } from "../components/Field";
-import { Button } from "../components/Button";
+import { Button } from "../components/common/Button";
 
 export const FormNewPerson = ({
   fields,

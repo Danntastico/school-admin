@@ -3,7 +3,7 @@ import { Headbar } from "../components/Headbar";
 import { Form } from "../components/Form";
 import { personInformationFields } from "../utils/fieldsList";
 import { Field } from "../components/Field";
-import { Button } from "../components/Button";
+import { Button } from "../components/common/Button";
 import { CardContainer } from "../styles/CardContainer";
 
 export const TeacherDetails = () => {

@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "../Button";
+import { Button } from "../common/Button";
 import { ListHeader, ListBody, DivList } from "./styles";
 export const List = ({ children, title, buttonLabel, handleOnBtnClick }) => {
   return (

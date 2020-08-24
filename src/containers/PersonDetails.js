@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Form } from "../components/Form";
 import { Field } from "../components/Field";
-import { Button } from "../components/Button";
+import { Button } from "../components/common/Button";
 import { useInput } from "../hooks/useInput";
 
 export const PersonDetails = ({
@@ -13,12 +13,13 @@ export const PersonDetails = ({
   handleInputChange
 }) => {
 
+  const [isEditable, setIsEditable] = useState(false)
+
+
 
   return (
-
-
     <>
-      <Form  onSumit={handleSubmit} isEditable title={`Register a new ${PATH}`}>
+      <Form  onSumit={handleSubmit} title={`Register a new ${PATH}`}>
         {fields.map((i) => (
           <Field
             key={i.name}

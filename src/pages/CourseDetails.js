@@ -2,7 +2,7 @@ import React from "react";
 import { Headbar } from "../components/Headbar";
 
 import { Field } from "../components/Field";
-import { Button } from "../components/Button";
+import { Button } from "../components/common/Button";
 import { Form } from "../components/Form";
 import { CardContainer } from "../styles/CardContainer";
 
