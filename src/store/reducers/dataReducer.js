@@ -85,16 +85,18 @@ export const dataReducer = (state = initialState, action) => {
         ...state,
         teachers: {
           ...state.teachers,
-          data: action.payload.map((i) => ({
-            id: i.id,
-            firstName: i.firstName,
-            lastName: i.lastName,
-            age: i.age,
-            address: i.address,
-            courses: i.course.map((item) => ({
-              name: item.name,
-            })),
-          })),
+          data: action.payload
+            .map((i) => ({
+              id: i.id,
+              firstName: i.firstName,
+              lastName: i.lastName,
+              age: i.age,
+              address: i.address,
+              courses: i.course.map((item) => ({
+                name: item.name,
+              })),
+            }))
+            .sort((a, b) => a - b),
         },
       };
     case POST_NEW_TEACHER:

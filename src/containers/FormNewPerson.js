@@ -5,14 +5,14 @@ import { Button } from "../components/common/Button";
 
 export const FormNewPerson = ({
   fields,
-  PATH,
+  formTitle,
   values,
   handleInputChange,
   handleClickCancelForm,
   handleSubmit,
 }) => {
   return (
-    <Form onSumit={handleSubmit} title={`Register a new ${PATH}`}>
+    <Form onSubmit={handleSubmit} title={formTitle}>
       {fields.map((i) => (
         <Field
           key={i.name}

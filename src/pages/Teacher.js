@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import { Headbar } from "../components/Headbar";
 import { useModal } from "../hooks/useModal";
-import { personInformationFields } from "../utils/fieldsList";
+import { personInformationFields, initialState } from "../utils/fieldsList";
 import { CardContainer } from "../styles/CardContainer";
 import { TEACHER_PATH } from "../utils/constants";
 import { ModalContainer } from "../containers/ModalContainer";
 import { useSelector, useDispatch } from "react-redux";
-import { startGetAllItems } from "../store/middlewares";
+import { startGetAllItems, startPostItem } from "../store/middlewares";
 import { ListOfItems } from "../containers/ListOfItems";
 import { useInput } from "../hooks/useInput";
 import { FormNewPerson } from "../containers/FormNewPerson";
@@ -16,12 +16,6 @@ export const Teachers = () => {
   const { teachers } = useSelector((state) => state.root);
   const { data } = teachers;
   const dispatch = useDispatch();
-  const initialState = {
-    name: "",
-    lastName: "",
-    age: 0,
-    address: "",
-  };
 
   const [values, handleInputChange, reset] = useInput(initialState);
 
@@ -36,6 +30,8 @@ export const Teachers = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    dispatch(startPostItem(TEACHER_PATH, values));
+    closeModal();
   };
 
   return (
@@ -55,6 +51,7 @@ export const Teachers = () => {
           handleInputChange={handleInputChange}
           handleClickCancelForm={handleCloseModal}
           handleSubmit={handleSubmit}
+          formTitle="Register a new Teacher"
         />
       </ModalContainer>
     </>

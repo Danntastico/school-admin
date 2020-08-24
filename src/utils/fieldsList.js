@@ -33,3 +33,10 @@ export const courseFields = [
     label: "Assign to a Teacher",
   },
 ];
+
+export const initialState = {
+  firstName: "",
+  lastName: "",
+  age: 0,
+  address: "",
+};

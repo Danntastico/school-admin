@@ -9,4 +9,5 @@ export const CardContainer = styled.div`
   padding-bottom: 70px;
   display: flex;
   justify-content: space-evenly;
+  margin: 20px 0;
 `;
