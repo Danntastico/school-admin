@@ -7,11 +7,9 @@ import { List } from "../components/common/List";
 import { Item } from "../components/common/Item";
 
 export const ListOfItems = ({ data, PATH, openModal }) => {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleClickTarget = (id) => {
-    dispatch(startGetItemById(PATH, id));
     navigate(`${PATH}/detail/${id}`);
   };
 
