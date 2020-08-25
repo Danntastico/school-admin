@@ -10,7 +10,7 @@ export const ListOfItems = ({ data, PATH, openModal }) => {
   const dispatch = useDispatch();
   const handleClickTarget = (id) => {
     dispatch(startGetItemById(PATH, id));
-    navigate(`${PATH}/detail/${id}`);
+    navigate(`/${PATH}/detail/${id}`);
   };
 
   const fillData = () => {

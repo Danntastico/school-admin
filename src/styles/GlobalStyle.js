@@ -58,8 +58,6 @@ export const GlobalStyle = createGlobalStyle`
     height: 75px;
     transition: .4s;
     position: absolute;
-    right: 0px;
-    bottom: 50px;
     cursor: pointer;
     :hover {
       transform: translate(0, -5px);

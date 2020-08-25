@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { navigate } from "@reach/router";
 import { InformationCard } from "../../components/InformationCard";
 import { Item } from "../../components/common/Item";
 import Loader from "react-loader-spinner";
@@ -8,7 +9,11 @@ import {
   startPostItem,
   startDeleteItem,
 } from "../../store/middlewares";
-import { STUDENTCOURSES_PATH, COURSE_PATH } from "../../utils/constants";
+import {
+  STUDENTCOURSES_PATH,
+  COURSE_PATH,
+  STUDENT_PATH,
+} from "../../utils/constants";
 import { useModal } from "../../hooks/useModal";
 import { ModalContainer } from "../ModalContainer";
 import { Form } from "../../components/common/Form";
@@ -73,7 +78,10 @@ export const StudentSubject = ({ id }) => {
     dispatch(startDeleteItem(STUDENTCOURSES_PATH, id));
   };
 
-  const handleClickDeleteStudent = () => {};
+  const handleClickDeleteStudent = () => {
+    dispatch(startDeleteItem(STUDENT_PATH, id));
+    navigate(`/students/`);
+  };
 
   return (
     <InformationCard title="Subjects" hasBtn handleOnClick={openModal}>

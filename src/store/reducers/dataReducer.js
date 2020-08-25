@@ -15,6 +15,7 @@ import {
   CLEAR_ACTIVE_STUDENT,
   GET_COURSE_BY_ID,
   DELETE_STUDENTCOURSE,
+  DELETE_STUDENT,
 } from "../../utils/constants";
 
 const initialState = {
@@ -247,6 +248,14 @@ export const dataReducer = (state = initialState, action) => {
           data: state.studentsCourses.data.filter(
             (i) => i.id !== action.payload.id
           ),
+        },
+      };
+    case DELETE_STUDENT:
+      return {
+        ...state,
+        students: {
+          ...state.students,
+          data: state.students.data.filter((i) => i.id !== action.payload.id),
         },
       };
     default:
