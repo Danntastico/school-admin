@@ -28,12 +28,16 @@ export const StudentDetails = () => {
       <Headbar title="Student Details" />
       <div className="pageContent">
         <CardContainer>
-          <PersonInfoCard
-            activePerson={studentDetails}
-            PATH={STUDENT_PATH}
-            id={id}
-            title="Student Information"
-          />
+          {activeStudent ? (
+            <PersonInfoCard
+              activePerson={activeStudent}
+              PATH={STUDENT_PATH}
+              id={id}
+              title="Student Information"
+            />
+          ) : (
+            <h2>Loading...</h2>
+          )}
         </CardContainer>
       </div>
     </>

@@ -16,18 +16,21 @@ export const TeacherDetails = () => {
   useEffect(() => {
     dispatch(startGetItemById(TEACHER_PATH, id));
   }, [id, dispatch]);
-
   return (
     <div>
       <Headbar title="Teacher Details" />
       <div className="pageContent">
         <CardContainer>
-          <PersonInfoCard
-            activePerson={activeTeacher}
-            PATH={TEACHER_PATH}
-            id={id}
-            title="Teacher Information"
-          />
+          {activeTeacher ? (
+            <PersonInfoCard
+              activePerson={activeTeacher}
+              PATH={TEACHER_PATH}
+              id={id}
+              title="Teacher Information"
+            />
+          ) : (
+            <h2>Loading</h2>
+          )}
         </CardContainer>
       </div>
     </div>
