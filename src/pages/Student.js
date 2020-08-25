@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Headbar } from "../components/Headbar";
 import { useModal } from "../hooks/useModal";
-import { STUDENT_PATH } from "../utils/constants";
+import { STUDENT_PATH, CLEAR_ACTIVE_STUDENT } from "../utils/constants";
 import { CardContainer } from "../styles/CardContainer";
 import { startPostItem, startGetAllItems } from "../store/middlewares";
 import { useInput } from "../hooks/useInput";
@@ -10,6 +10,7 @@ import { ListOfItems } from "../containers/ListOfItems";
 import { ModalContainer } from "../containers/ModalContainer";
 import { FormNewPerson } from "../containers/FormNewPerson";
 import { personInformationFields } from "../utils/fieldsList";
+import { clearActiveItem } from "../store/actions/crudActions";
 
 const initialState = {
   firstName: "",
@@ -26,6 +27,7 @@ export const Students = () => {
 
   useEffect(() => {
     dispatch(startGetAllItems(STUDENT_PATH));
+    dispatch(clearActiveItem(CLEAR_ACTIVE_STUDENT));
   }, [dispatch]);
 
   const handleCloseModal = () => {
