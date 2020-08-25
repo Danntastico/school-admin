@@ -21,6 +21,24 @@ export const personInformationFields = [
   },
 ];
 
+export const courseInformationFields = [
+  {
+    name: "name",
+    inputType: "text",
+    label: "Name",
+  },
+  {
+    name: "teacher_id",
+    fieldType: "select",
+    label: "Teacher",
+  },
+  {
+    name: "year",
+    fieldType: "date",
+    label: "Year",
+  },
+];
+
 export const courseFields = [
   {
     name: "name",
