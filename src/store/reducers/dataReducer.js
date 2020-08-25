@@ -137,7 +137,7 @@ export const dataReducer = (state = initialState, action) => {
         ...state,
         teachers: {
           ...state.teachers,
-          activeteacher: null,
+          activeTeacher: null,
         },
       };
 
@@ -165,7 +165,7 @@ export const dataReducer = (state = initialState, action) => {
         ...state,
         courses: {
           ...state.courses,
-          activecourse: null,
+          activeCourse: null,
         },
       };
     case POST_NEW_COURSE:

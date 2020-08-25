@@ -2,11 +2,14 @@ import React from "react";
 import { useNavigate } from "@reach/router";
 import { List } from "../components/common/List";
 import { Item } from "../components/common/Item";
+import { useDispatch } from "react-redux";
+import { startGetItemById } from "../store/middlewares";
 
 export const ListOfItems = ({ data, PATH, openModal }) => {
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
   const handleClickTarget = (id) => {
+    dispatch(startGetItemById(PATH, id));
     navigate(`${PATH}/detail/${id}`);
   };
 
