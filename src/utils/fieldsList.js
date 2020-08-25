@@ -52,6 +52,19 @@ export const courseFields = [
   },
 ];
 
+export const assignSubjectToStudent = [
+  {
+    name: "id_course",
+    fieldType: "select",
+    label: "Available subjects ",
+  },
+  {
+    name: "calification",
+    inputType: "number",
+    label: "Final Note",
+  },
+];
+
 export const initialState = {
   firstName: "",
   lastName: "",

@@ -5,6 +5,13 @@ import Loader from "react-loader-spinner";
 import { useDispatch, useSelector } from "react-redux";
 import { startGetAllItems } from "../../store/middlewares";
 import { STUDENTCOURSES_PATH, COURSE_PATH } from "../../utils/constants";
+import { useModal } from "../../hooks/useModal";
+import { ModalContainer } from "../ModalContainer";
+import { Form } from "../../components/common/Form";
+import { Field } from "../../components/common/Field";
+import { useInput } from "../../hooks/useInput";
+import { Button } from "../../components/common/Button";
+import { assignSubjectToStudent } from "../../utils/fieldsList";
 
 export const StudentSubject = ({ id }) => {
   const dispatch = useDispatch();
@@ -12,7 +19,12 @@ export const StudentSubject = ({ id }) => {
   const { courses } = useSelector((state) => state.root);
   const { data: studentCoursesList } = studentsCourses;
   const { data: allCourses } = courses;
-  const [studentCourses, setStudentCourses] = useState(allCourses);
+  const [studentCourses, setStudentCourses] = useState(studentCoursesList);
+  const [isModalOpen, openModal, closeModal] = useModal();
+  const [values, handleInputChange, reset] = useInput({
+    id_course: "",
+    calification: 0,
+  });
 
   useEffect(() => {
     dispatch(startGetAllItems(STUDENTCOURSES_PATH));
@@ -25,21 +37,26 @@ export const StudentSubject = ({ id }) => {
     );
   }, [studentCoursesList, id]);
 
-  const getNameById = (dataList = [], id_course) => {
-    return !!dataList && dataList.find((i) => i.id === id_course).name;
-  };
-
   const colorIfAprooved = (calification) =>
     calification >= 3.0 ? "#CFFFD4" : "#FFCFCF";
 
+  const handleSubmitAssignCourse = (e) => {
+    e.preventDefault();
+  };
+
+  const handleCloseModal = () => {
+    closeModal();
+    reset();
+  };
+
   return (
-    <InformationCard title="Subjects">
+    <InformationCard title="Subjects" hasBtn handleOnClick={openModal}>
       <>
         {studentCourses ? (
-          studentCourses.length !== 0 &&
+          allCourses.length !== 0 &&
           studentCourses.map((course) => (
             <Item bgColor={colorIfAprooved(course.calification)}>
-              <p> {getNameById(allCourses, course.id_course)}</p>
+              <p> {allCourses.find((i) => i.id === course.id_course).name}</p>
               <p> {course.calification}</p>
             </Item>
           ))
@@ -47,6 +64,41 @@ export const StudentSubject = ({ id }) => {
           <Loader type="Circles" color="#f5cb5c" height={80} width={80} />
         )}
       </>
+      <ModalContainer isModalOpen={isModalOpen} closeModal={closeModal}>
+        <Form title="Assign Subject" onSubmit={handleSubmitAssignCourse}>
+          <>
+            {assignSubjectToStudent.map((i) =>
+              i.fieldType === "select" ? (
+                <Field
+                  key={i.name}
+                  value={values[i.name]}
+                  handleInputChange={handleInputChange}
+                  {...i}
+                >
+                  <option> </option>
+                  {allCourses.map((course) => (
+                    <option value={course.id}>
+                      {course.id} {course.name}
+                      {new Date(course.year).getFullYear()}
+                    </option>
+                  ))}
+                </Field>
+              ) : (
+                <Field
+                  key={i.name}
+                  value={values[i.value]}
+                  handleInputChange={handleInputChange}
+                  {...i}
+                />
+              )
+            )}
+          </>
+          <>
+            <Button type="submit" label="Assign" />
+            <Button onClick={handleCloseModal} label="Cancel" />
+          </>
+        </Form>
+      </ModalContainer>
     </InformationCard>
   );
 };
