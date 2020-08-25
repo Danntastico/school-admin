@@ -118,10 +118,6 @@ export const dataReducer = (state = initialState, action) => {
             lastName: action.payload.lastName,
             age: action.payload.age,
             address: action.payload.address,
-            courses: action.payload.stuntendsCourse.map((item) => ({
-              course: item.course.name,
-              calification: item.calification,
-            })),
           },
         },
       };
