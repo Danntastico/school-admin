@@ -16,13 +16,14 @@ export const CourseDetails = () => {
   useEffect(() => {
     dispatch(startGetItemById(COURSE_PATH, id));
   }, [id, dispatch]);
+
   return (
     <div>
       <Headbar title="course Details" />
       <div className="pageContent">
         <CardContainer>
           {activeCourse ? (
-            <CourseInfoCard />
+            <CourseInfoCard activeCourse={activeCourse} />
           ) : (
             <Loader type="Circles" color="#f5cb5c" height={80} width={80} />
           )}
