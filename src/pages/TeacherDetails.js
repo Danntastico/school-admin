@@ -32,6 +32,11 @@ export const TeacherDetails = () => {
           ) : (
             <Loader type="Circles" color="#f5cb5c" height={80} width={80} />
           )}
+          <div>
+            <div>
+              <h3></h3>
+            </div>
+          </div>
         </CardContainer>
       </div>
     </div>

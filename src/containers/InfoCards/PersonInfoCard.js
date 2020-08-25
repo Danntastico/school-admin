@@ -24,7 +24,12 @@ export const PersonInfoCard = ({ title, PATH, activePerson }) => {
 
   return (
     <div>
-      <InformationCard handleOnEditClick={handleOnEditClick} title={title}>
+      <InformationCard
+        hasBtn
+        isEdit
+        handleOnClick={handleOnEditClick}
+        title={title}
+      >
         <Form hideHeader onSubmit={handleSubmit}>
           {personInformationFields.map((i) => (
             <Field

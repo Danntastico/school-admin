@@ -60,7 +60,9 @@ export const CourseInfoCard = ({ activeCourse }) => {
   return (
     <div>
       <InformationCard
-        handleOnEditClick={handleOnEditClick}
+        hasBtn
+        isEdit
+        handleOnClick={handleOnEditClick}
         title="Course Information"
       >
         <Form hideHeader onSubmit={handleSubmit}>
