@@ -24,3 +24,5 @@ export const put = (item, actionType) => ({
   type: actionType,
   payload: item,
 });
+
+export const clearActiveItem = (type) => ({ type: type });
