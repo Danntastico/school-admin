@@ -40,6 +40,7 @@ export const StudentDetails = () => {
             <Loader type="Circles" color="#f5cb5c" height={80} width={80} />
           )}
           <StudentSubject id={id} />
+          {}
         </CardContainer>
       </div>
     </>

@@ -50,4 +50,19 @@ export const GlobalStyle = createGlobalStyle`
   .pageContent {
     margin: 40px 60px;
   }
+
+  .absoluteBtn {
+    background-color: var(--secondary-color);
+    color: white;
+    font-weight: 500;
+    height: 75px;
+    transition: .4s;
+    position: absolute;
+    cursor: pointer;
+    :hover {
+      transform: translate(0, -5px);
+      box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.19);
+      background-color: var(--dark-color);
+    }
+  }
 `;

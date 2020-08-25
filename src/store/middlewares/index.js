@@ -31,7 +31,14 @@ import {
   DELETE_COURSE,
 } from "../../utils/constants";
 
-import { get, post, getId, put, deleteI } from "../actions/crudActions";
+import {
+  get,
+  post,
+  getId,
+  put,
+  deleteI,
+  receiveCSVData,
+} from "../actions/crudActions";
 import Swal from "sweetalert2";
 
 export const startGetAllItems = (itemType) => async (dispatch) => {
@@ -153,6 +160,48 @@ export const startDeleteItem = (itemType, id) => async (dispatch) => {
     position: "center",
     icon: "success",
     title: "Item Deleted! 😎",
+    showConfirmButton: false,
+    timer: 1500,
+  });
+};
+
+export const startReceiveCSVData = () => async (dispatch) => {
+  const studentsCourses = await getAllItems(STUDENTCOURSES_PATH);
+  const teachers = await getAllItems(TEACHER_PATH);
+  const students = await getAllItems(STUDENT_PATH);
+  const courses = await getAllItems(COURSE_PATH);
+
+  const response = studentsCourses.map((i) => ({
+    year: new Date(
+      courses.find((course) => Number.parseInt(course.id) === i.id_course).year
+    ).getFullYear(),
+    id_student: i.id_student,
+    student_name: students.find(
+      (student) => Number.parseInt(student.id) === i.id_student
+    ).firstName,
+    id_course: i.id_course,
+    course_name: courses.find(
+      (course) => Number.parseInt(course.id) === i.id_course
+    ).name,
+    id_teacher: courses.find(
+      (course) => Number.parseInt(course.id) === i.id_course
+    ).teacher_id,
+    teacher_name: teachers.find(
+      (teacher) =>
+        Number.parseInt(
+          courses.find((course) => Number.parseInt(course.id) === i.id_course)
+            .teacher_id
+        ) === teacher.id
+    ).firstName,
+    calification: i.calification,
+    isApproved: i.calification <= 3 ? "NO" : "SI",
+  }));
+
+  dispatch(receiveCSVData(response));
+  Swal.fire({
+    position: "center",
+    icon: "success",
+    title: "Data is Ready",
     showConfirmButton: false,
     timer: 1500,
   });

@@ -15,6 +15,9 @@ import {
   CLEAR_ACTIVE_STUDENT,
   GET_COURSE_BY_ID,
   DELETE_STUDENTCOURSE,
+  DELETE_STUDENT,
+  RECEIVECSV_DATA,
+  CLEANCSV_DATA,
 } from "../../utils/constants";
 
 const initialState = {
@@ -33,6 +36,20 @@ const initialState = {
   studentsCourses: {
     data: [],
     activeStudentCourses: [],
+  },
+  csvReport: {
+    data: [],
+    headers: [
+      { label: "Año académico", key: "year" },
+      { label: "Identificación Alumno", key: "id_student" },
+      { label: "Nombre alumno", key: "student_name" },
+      { label: "Código Materia", key: "id_course" },
+      { label: "Nombre Materia", key: "course_name" },
+      { label: "Identifiación del profesor", key: "id_teacher" },
+      { label: "Nombre del profesor", key: "teacher_name" },
+      { label: "Califación final", key: "calification" },
+      { label: "Aprobó", key: "isApproved" },
+    ],
   },
 };
 
@@ -247,6 +264,30 @@ export const dataReducer = (state = initialState, action) => {
           data: state.studentsCourses.data.filter(
             (i) => i.id !== action.payload.id
           ),
+        },
+      };
+    case DELETE_STUDENT:
+      return {
+        ...state,
+        students: {
+          ...state.students,
+          data: state.students.data.filter((i) => i.id !== action.payload.id),
+        },
+      };
+    case RECEIVECSV_DATA:
+      return {
+        ...state,
+        csvReport: {
+          ...state.csvReport,
+          data: action.payload,
+        },
+      };
+    case CLEANCSV_DATA:
+      return {
+        ...state,
+        csvReport: {
+          ...state.csvReport,
+          data: [],
         },
       };
     default:
