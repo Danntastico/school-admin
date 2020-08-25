@@ -6,10 +6,10 @@ import { courseInformationFields } from "../../utils/fieldsList";
 import { Field } from "../../components/common/Field";
 import { Button } from "../../components/common/Button";
 import { InformationCard } from "../../components/InformationCard";
-import { startGetAllItems } from "../../store/middlewares";
-import { TEACHER_PATH } from "../../utils/constants";
+import { startGetAllItems, startPutItem } from "../../store/middlewares";
+import { TEACHER_PATH, COURSE_PATH } from "../../utils/constants";
 
-export const CourseInfoCard = ({ activeCourse }) => {
+export const CourseInfoCard = ({ id, activeCourse }) => {
   const { teachers } = useSelector((state) => state.root);
   const dispatch = useDispatch();
   const { data: teachersList } = teachers;
@@ -53,7 +53,7 @@ export const CourseInfoCard = ({ activeCourse }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // dispatch()
+    dispatch(startPutItem(COURSE_PATH, Number.parseInt(id), values));
     console.log(values);
     setIsDisabled(!isDisabled);
   };

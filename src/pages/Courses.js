@@ -7,7 +7,7 @@ import { CardContainer } from "../styles/CardContainer";
 import { ListOfItems } from "../containers/ListOfItems";
 import { COURSE_PATH, CLEAR_ACTIVE_COURSE } from "../utils/constants";
 import { useSelector, useDispatch } from "react-redux";
-import { startGetAllItems } from "../store/middlewares";
+import { startGetAllItems, startPostItem } from "../store/middlewares";
 import { courseFields } from "../utils/fieldsList";
 import { useInput } from "../hooks/useInput";
 import { FormNewCourse } from "../containers/FormNewCourse";
@@ -38,6 +38,8 @@ export const Courses = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    dispatch(startPostItem(COURSE_PATH, values));
+    closeModal();
   };
 
   return (

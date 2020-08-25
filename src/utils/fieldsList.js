@@ -28,7 +28,7 @@ export const courseInformationFields = [
     label: "Name",
   },
   {
-    name: "teacherId",
+    name: "teacher_id",
     fieldType: "select",
     label: "Teacher",
   },
@@ -62,6 +62,8 @@ export const assignSubjectToStudent = [
     name: "calification",
     inputType: "number",
     label: "Final Note",
+    min: 0,
+    max: 5,
   },
 ];
 

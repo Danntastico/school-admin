@@ -3,6 +3,7 @@ import {
   postItem,
   getItemById,
   putItem,
+  deleteItem,
 } from "../../utils/services/api";
 import {
   STUDENT_PATH,
@@ -23,9 +24,14 @@ import {
   POST_NEW_STUDENTCOURSE,
   PUT_TEACHER,
   PUT_STUDENT,
+  PUT_COURSE,
+  DELETE_STUDENTCOURSE,
+  DELETE_STUDENT,
+  DELETE_TEACHER,
+  DELETE_COURSE,
 } from "../../utils/constants";
 
-import { get, post, getId, put } from "../actions/crudActions";
+import { get, post, getId, put, deleteI } from "../actions/crudActions";
 import Swal from "sweetalert2";
 
 export const startGetAllItems = (itemType) => async (dispatch) => {
@@ -107,6 +113,9 @@ export const startPutItem = (itemType, id, body) => async (dispatch) => {
     case TEACHER_PATH:
       dispatch(post(response, PUT_TEACHER));
       break;
+    case COURSE_PATH:
+      dispatch(post(response, PUT_COURSE));
+      break;
     default:
       break;
   }
@@ -115,6 +124,35 @@ export const startPutItem = (itemType, id, body) => async (dispatch) => {
     position: "center",
     icon: "success",
     title: "Updated! 😎",
+    showConfirmButton: false,
+    timer: 1500,
+  });
+};
+
+export const startDeleteItem = (itemType, id) => async (dispatch) => {
+  const response = await deleteItem(itemType, id);
+
+  switch (itemType) {
+    case STUDENT_PATH:
+      dispatch(deleteI(response, DELETE_STUDENT));
+      break;
+    case TEACHER_PATH:
+      dispatch(deleteI(response, DELETE_TEACHER));
+      break;
+    case COURSE_PATH:
+      dispatch(deleteI(response, DELETE_COURSE));
+      break;
+    case STUDENTCOURSES_PATH:
+      dispatch(deleteI(response, DELETE_STUDENTCOURSE));
+      break;
+    default:
+      break;
+  }
+
+  Swal.fire({
+    position: "center",
+    icon: "success",
+    title: "Item Deleted! 😎",
     showConfirmButton: false,
     timer: 1500,
   });

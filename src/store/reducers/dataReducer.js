@@ -14,6 +14,7 @@ import {
   CLEAR_ACTIVE_COURSE,
   CLEAR_ACTIVE_STUDENT,
   GET_COURSE_BY_ID,
+  DELETE_STUDENTCOURSE,
 } from "../../utils/constants";
 
 const initialState = {
@@ -170,7 +171,7 @@ export const dataReducer = (state = initialState, action) => {
             id: action.payload.id,
             name: action.payload.name,
             year: action.payload.year,
-            teacherId: action.payload.teacher_id,
+            teacher_id: action.payload.teacher_id,
           },
         },
       };
@@ -237,6 +238,17 @@ export const dataReducer = (state = initialState, action) => {
         },
       };
     }
+    case DELETE_STUDENTCOURSE:
+      console.log(action.payload.id);
+      return {
+        ...state,
+        studentsCourses: {
+          ...state.studentsCourses,
+          data: state.studentsCourses.data.filter(
+            (i) => i.id !== action.payload.id
+          ),
+        },
+      };
     default:
       return state;
   }

@@ -37,7 +37,7 @@ export const Students = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // dispatch(startPostItem(STUDENT_PATH, values));
+    dispatch(startPostItem(STUDENT_PATH, values));
     closeModal();
     reset();
   };

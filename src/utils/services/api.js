@@ -51,3 +51,17 @@ export const putItem = async (itemType = "", id = 0, body = {}) => {
 
   return data;
 };
+
+export const deleteItem = async (itemType = "", id) => {
+  const url = `${BACKEND_URL}/api/${itemType}/${id}`;
+
+  const params = {
+    method: "DELETE",
+    headers: { Accept: "application/json", "Content-Type": "application/json" },
+    credentials: "omit",
+  };
+  const apiInstance = await fetch(url, params);
+
+  const data = await apiInstance.json();
+  return data;
+};
