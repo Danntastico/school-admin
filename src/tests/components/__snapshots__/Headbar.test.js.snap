@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Unit test to <Headbar /> Should show the component correctly (shallow) 1`] = `
+<styled.header>
+  <h3>
+    Testing the Headbar Title
+  </h3>
+</styled.header>
+`;

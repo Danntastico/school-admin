@@ -1,30 +1,36 @@
 import React, { useEffect } from "react";
+
 import { Headbar } from "../components/Headbar";
 import { useModal } from "../hooks/useModal";
-import { personInformationFields, initialState } from "../utils/fieldsList";
-import { CardContainer } from "../styles/CardContainer";
-import { TEACHER_PATH, CLEAR_ACTIVE_TEACHER } from "../utils/constants";
 import { ModalContainer } from "../containers/ModalContainer";
+import { CardContainer } from "../styles/CardContainer";
+import { ListOfItems } from "../containers/ListOfItems";
+import { COURSE_PATH, CLEAR_ACTIVE_COURSE } from "../utils/constants";
 import { useSelector, useDispatch } from "react-redux";
 import { startGetAllItems, startPostItem } from "../store/middlewares";
-import { ListOfItems } from "../containers/ListOfItems";
+import { courseFields } from "../utils/fieldsList";
 import { useInput } from "../hooks/useInput";
-import { FormNewPerson } from "../containers/FormNewPerson";
+import { FormNewCourse } from "../containers/FormNewCourse";
 import { clearActiveItem } from "../store/actions/crudActions";
 
-export const Teachers = () => {
-  const [isModalOpen, openModal, closeModal] = useModal();
-  const { teachers } = useSelector((state) => state.root);
-  const { data } = teachers;
+export const Courses = () => {
+  const { courses } = useSelector((state) => state.root);
+  const { data } = courses;
   const dispatch = useDispatch();
+  const [isModalOpen, openModal, closeModal] = useModal();
+
+  const initialState = {
+    name: "",
+    year: new Date(),
+    teacher_id: "",
+  };
 
   const [values, handleInputChange, reset] = useInput(initialState);
 
   useEffect(() => {
-    dispatch(startGetAllItems(TEACHER_PATH));
-    dispatch(clearActiveItem(CLEAR_ACTIVE_TEACHER));
+    dispatch(startGetAllItems(COURSE_PATH));
+    dispatch(clearActiveItem(CLEAR_ACTIVE_COURSE));
   }, [dispatch]);
-
   const handleCloseModal = () => {
     closeModal();
     reset();
@@ -32,30 +38,28 @@ export const Teachers = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(startPostItem(TEACHER_PATH, values));
+    dispatch(startPostItem(COURSE_PATH, values));
     closeModal();
   };
 
   return (
-    <>
-      <Headbar title="Teacher View" />
+    <div>
+      <Headbar title="course View" />
       <div className="pageContent">
         <CardContainer>
-          <ListOfItems data={data} openModal={openModal} PATH={TEACHER_PATH} />
+          <ListOfItems data={data} openModal={openModal} PATH={COURSE_PATH} />
         </CardContainer>
       </div>
-
-      <ModalContainer isModalOpen={isModalOpen} closeModal={closeModal}>
-        <FormNewPerson
+      <ModalContainer initialState={initialState} isModalOpen={isModalOpen}>
+        <FormNewCourse
+          fields={courseFields}
+          PATH={COURSE_PATH}
           values={values}
-          initialState={data}
-          fields={personInformationFields}
           handleInputChange={handleInputChange}
           handleClickCancelForm={handleCloseModal}
           handleSubmit={handleSubmit}
-          formTitle="Register a new Teacher"
         />
       </ModalContainer>
-    </>
+    </div>
   );
 };
