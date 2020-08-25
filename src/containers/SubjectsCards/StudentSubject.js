@@ -3,7 +3,11 @@ import { InformationCard } from "../../components/InformationCard";
 import { Item } from "../../components/common/Item";
 import Loader from "react-loader-spinner";
 import { useDispatch, useSelector } from "react-redux";
-import { startGetAllItems } from "../../store/middlewares";
+import {
+  startGetAllItems,
+  startPostItem,
+  startDeleteItem,
+} from "../../store/middlewares";
 import { STUDENTCOURSES_PATH, COURSE_PATH } from "../../utils/constants";
 import { useModal } from "../../hooks/useModal";
 import { ModalContainer } from "../ModalContainer";
@@ -12,6 +16,7 @@ import { Field } from "../../components/common/Field";
 import { useInput } from "../../hooks/useInput";
 import { Button } from "../../components/common/Button";
 import { assignSubjectToStudent } from "../../utils/fieldsList";
+import Swal from "sweetalert2";
 
 export const StudentSubject = ({ id }) => {
   const dispatch = useDispatch();
@@ -42,6 +47,21 @@ export const StudentSubject = ({ id }) => {
 
   const handleSubmitAssignCourse = (e) => {
     e.preventDefault();
+    if (studentCourses.some((i) => i.id_course == values.id_course)) {
+      Swal.fire({
+        position: "center",
+        icon: "warning",
+        title: "❌❌Select Other!❌❌",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    } else {
+      dispatch(
+        startPostItem(STUDENTCOURSES_PATH, { ...values, id_student: id })
+      );
+      closeModal();
+      reset();
+    }
   };
 
   const handleCloseModal = () => {
@@ -49,13 +69,20 @@ export const StudentSubject = ({ id }) => {
     reset();
   };
 
+  const handleDeleteCourse = (id) => {
+    dispatch(startDeleteItem(STUDENTCOURSES_PATH, id));
+  };
+  console.log(studentCourses);
   return (
     <InformationCard title="Subjects" hasBtn handleOnClick={openModal}>
       <>
         {studentCourses ? (
           allCourses.length !== 0 &&
           studentCourses.map((course) => (
-            <Item bgColor={colorIfAprooved(course.calification)}>
+            <Item
+              bgColor={colorIfAprooved(course.calification)}
+              onClick={() => handleDeleteCourse(course.id)}
+            >
               <p> {allCourses.find((i) => i.id === course.id_course).name}</p>
               <p> {course.calification}</p>
             </Item>
