@@ -13,6 +13,7 @@ import {
   CLEAR_ACTIVE_TEACHER,
   CLEAR_ACTIVE_COURSE,
   CLEAR_ACTIVE_STUDENT,
+  GET_COURSE_BY_ID,
 } from "../../utils/constants";
 
 const initialState = {
@@ -158,6 +159,19 @@ export const dataReducer = (state = initialState, action) => {
               course: item.course.name,
             })),
           })),
+        },
+      };
+    case GET_COURSE_BY_ID:
+      return {
+        ...state,
+        courses: {
+          ...state.courses,
+          activeCourse: {
+            id: action.payload.id,
+            name: action.payload.name,
+            year: action.payload.year,
+            teacherId: action.payload.teacher_id,
+          },
         },
       };
     case CLEAR_ACTIVE_COURSE:
