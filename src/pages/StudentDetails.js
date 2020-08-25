@@ -36,7 +36,17 @@ export const StudentDetails = () => {
                 </div>
               </div>
             </div>
-            <div></div>
+            <div>
+              <div>
+                <h3>Subjects</h3>
+                <button>Assign Subject</button>
+              </div>
+              <div>
+                <div>
+                  <p>Math</p>
+                </div>
+              </div>
+            </div>
           </div>
         </CardContainer>
       </div>
