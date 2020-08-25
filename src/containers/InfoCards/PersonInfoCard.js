@@ -8,14 +8,8 @@ import { useInput } from "../../hooks/useInput";
 
 export const PersonInfoCard = ({ title, PATH, activePerson }) => {
   const [isDisabled, setIsDisabled] = useState(true);
-  const { lastName, firstName, age, address } = activePerson;
 
-  const [values, handleInputChange] = useInput({
-    firstName: firstName,
-    lastName: lastName,
-    age: age,
-    address: address,
-  });
+  const [values, handleInputChange] = useInput(activePerson);
 
   const handleOnEditClick = () => {
     setIsDisabled(!isDisabled);
