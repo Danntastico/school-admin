@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ItemList = styled.div`
-  background-color: ${(props) => props.backgroundColor || "#ffffff"};
+  background-color: ${(props) => props.bgColor || "#ffffff"};
   color: ${(props) => props.textColor || "var(--secondary-color)"};
   font-style: normal;
   text-transform: capitalize;
