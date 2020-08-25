@@ -17,7 +17,7 @@ export const CourseDetails = () => {
   useEffect(() => {
     dispatch(startGetItemById(COURSE_PATH, id));
   }, [id, dispatch]);
-
+  //wont erase
   return (
     <div>
       <Headbar title="course Details" />
