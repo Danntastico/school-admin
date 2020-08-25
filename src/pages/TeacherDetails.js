@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Headbar } from "../components/Headbar";
 import { CardContainer } from "../styles/CardContainer";
 import { PersonInfoCard } from "../containers/InfoCards/PersonInfoCard";
@@ -7,8 +7,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { TEACHER_PATH, COURSE_PATH } from "../utils/constants";
 import { startGetItemById, startGetAllItems } from "../store/middlewares";
 import Loader from "react-loader-spinner";
-import { InformationCard } from "../components/InformationCard";
-import { Item } from "../components/common/Item";
 import { TeacherSubjects } from "../containers/SubjectsCards/TeacherSubjects";
 
 export const TeacherDetails = () => {

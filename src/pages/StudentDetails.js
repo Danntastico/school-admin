@@ -7,6 +7,7 @@ import { useParams } from "@reach/router";
 import { STUDENT_PATH } from "../utils/constants";
 import { startGetItemById } from "../store/middlewares";
 import Loader from "react-loader-spinner";
+import { StudentSubject } from "../containers/SubjectsCards/StudentSubject";
 
 export const StudentDetails = () => {
   const { id } = useParams();
@@ -20,7 +21,6 @@ export const StudentDetails = () => {
     dispatch(startGetItemById(STUDENT_PATH, id));
   }, []);
   useEffect(() => {
-    console.log("change!");
     setStudentDetails(activeStudent);
   }, [activeStudent]);
 
@@ -39,6 +39,7 @@ export const StudentDetails = () => {
           ) : (
             <Loader type="Circles" color="#f5cb5c" height={80} width={80} />
           )}
+          <StudentSubject id={id} />
         </CardContainer>
       </div>
     </>

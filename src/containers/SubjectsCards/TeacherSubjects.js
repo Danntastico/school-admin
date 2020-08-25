@@ -2,10 +2,9 @@ import React, { useState, useEffect } from "react";
 import { InformationCard } from "../../components/InformationCard";
 import { Item } from "../../components/common/Item";
 import Loader from "react-loader-spinner";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 export const TeacherSubjects = ({ id }) => {
-  const dispatch = useDispatch();
   const { courses } = useSelector((state) => state.root);
   const { data: coursesList } = courses;
   const [teacherCourses, setTeacherCourses] = useState(null);
@@ -15,7 +14,6 @@ export const TeacherSubjects = ({ id }) => {
       coursesList.filter((i) => i.teacher_id === Number.parseInt(id))
     );
   }, [coursesList]);
-  console.log(teacherCourses);
 
   return (
     <InformationCard title="Subjects">
