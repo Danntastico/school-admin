@@ -72,7 +72,9 @@ export const StudentSubject = ({ id }) => {
   const handleDeleteCourse = (id) => {
     dispatch(startDeleteItem(STUDENTCOURSES_PATH, id));
   };
-  console.log(studentCourses);
+
+  const handleClickDeleteStudent = () => {};
+
   return (
     <InformationCard title="Subjects" hasBtn handleOnClick={openModal}>
       <>
@@ -126,6 +128,11 @@ export const StudentSubject = ({ id }) => {
           </>
         </Form>
       </ModalContainer>
+      {studentCourses.length === 0 && (
+        <button onClick={handleClickDeleteStudent} className="absoluteBtn">
+          DELETE STUDENT
+        </button>
+      )}
     </InformationCard>
   );
 };

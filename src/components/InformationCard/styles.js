@@ -4,6 +4,7 @@ import { fadeIn } from "../../styles/anitmation";
 export const CardContent = styled.div`
   margin: 50px 10px;
   min-width: 300px;
+  position: relative;
 `;
 export const HeaderInfoCard = styled.div`
   display: flex;
