@@ -1,6 +1,7 @@
 import {
   GET_STUDENTCOURSES_BY_ID,
   RECEIVECSV_DATA,
+  CLEANCSV_DATA,
 } from "../../utils/constants";
 
 export const get = (data, actionType) => ({
@@ -38,4 +39,8 @@ export const deleteI = (item, actionType) => ({
 export const receiveCSVData = (data) => ({
   type: RECEIVECSV_DATA,
   payload: data,
+});
+
+export const cleanCSVDATA = () => ({
+  type: CLEANCSV_DATA,
 });
