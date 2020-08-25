@@ -21,6 +21,6 @@ export const ItemList = styled.div`
     padding-left: 10px;
   }
   :hover {
-    transform: scale(1.05);
+    transform: scale(1.03);
   }
 `;
