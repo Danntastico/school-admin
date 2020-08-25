@@ -1,6 +1,7 @@
 import React from "react";
 import { MdEdit } from "react-icons/md";
 import { FormHeader, FormTitle, FormBody, FormFooter, EditBtn } from "./styles";
+
 export const Form = ({
   children,
   hideHeader,
