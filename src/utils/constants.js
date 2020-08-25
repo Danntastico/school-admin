@@ -14,17 +14,20 @@ export const DETAIL_TEACHER_PATH = "/teachers/detail/:id";
 //Action Types
 export const GET_ALL_STUDENTS = "GET_ALL_STUDENTS";
 export const GET_STUDENT_BY_ID = "GET_STUDENT_BY_ID";
+export const CLEAR_ACTIVE_STUDENT = "CLEAR_ACTIVE_STUDENT";
 export const POST_NEW_STUDENT = "POST_NEW_STUDENT";
 export const REMOVE_STUDENT = "REMOVE_STUDENT";
 export const PUT_STUDENT = "PUT_STUDENT";
 
 export const GET_ALL_TEACHERS = "GET_ALL_TEACHERS";
 export const GET_TEACHER_BY_ID = "GET_TEACHER_BY_ID";
+export const CLEAR_ACTIVE_TEACHER = "CLEAR_ACTIVE_TEACHER";
 export const POST_NEW_TEACHER = "POST_NEW_TEACHER";
 export const PUT_TEACHER = "PUT_TEACHER";
 
 export const GET_ALL_COURSES = "GET_ALL_COURSES";
 export const GET_COURSE_BY_ID = "GET_COURSE_BY_ID";
+export const CLEAR_ACTIVE_COURSE = "CLEAR_ACTIVE_COURSE";
 export const POST_NEW_COURSE = "POST_NEW_COURSE";
 export const PUT_COURSE = "PUT_COURSE";
 

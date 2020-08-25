@@ -10,20 +10,23 @@ import {
   POST_NEW_TEACHER,
   POST_NEW_COURSE,
   GET_STUDENTCOURSES_BY_ID,
+  CLEAR_ACTIVE_TEACHER,
+  CLEAR_ACTIVE_COURSE,
+  CLEAR_ACTIVE_STUDENT,
 } from "../../utils/constants";
 
 const initialState = {
   teachers: {
     data: [],
-    activeTeacher: {},
+    activeTeacher: null,
   },
   students: {
     data: [],
-    activeStudent: {},
+    activeStudent: null,
   },
   courses: {
     data: [],
-    activeCourse: {},
+    activeCourse: null,
   },
   studentsCourses: {
     data: [],
@@ -61,7 +64,7 @@ export const dataReducer = (state = initialState, action) => {
           data: [action.payload, ...state.students.data],
         },
       };
-    case GET_STUDENT_BY_ID: {
+    case GET_STUDENT_BY_ID:
       return {
         ...state,
         students: {
@@ -79,7 +82,15 @@ export const dataReducer = (state = initialState, action) => {
           },
         },
       };
-    }
+
+    case CLEAR_ACTIVE_STUDENT:
+      return {
+        ...state,
+        students: {
+          ...state.students,
+          activeStudent: null,
+        },
+      };
     case GET_ALL_TEACHERS:
       return {
         ...state,
@@ -121,6 +132,15 @@ export const dataReducer = (state = initialState, action) => {
           },
         },
       };
+    case CLEAR_ACTIVE_TEACHER:
+      return {
+        ...state,
+        teachers: {
+          ...state.teachers,
+          activeteacher: null,
+        },
+      };
+
     case GET_ALL_COURSES:
       return {
         ...state,
@@ -138,6 +158,14 @@ export const dataReducer = (state = initialState, action) => {
               course: item.course.name,
             })),
           })),
+        },
+      };
+    case CLEAR_ACTIVE_COURSE:
+      return {
+        ...state,
+        courses: {
+          ...state.courses,
+          activecourse: null,
         },
       };
     case POST_NEW_COURSE:
