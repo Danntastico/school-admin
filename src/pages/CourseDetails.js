@@ -24,7 +24,7 @@ export const CourseDetails = () => {
       <div className="pageContent">
         <CardContainer>
           {activeCourse ? (
-            <CourseInfoCard activeCourse={activeCourse} />
+            <CourseInfoCard id={id} activeCourse={activeCourse} />
           ) : (
             <Loader type="Circles" color="#f5cb5c" height={80} width={80} />
           )}

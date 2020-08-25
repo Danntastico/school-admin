@@ -23,6 +23,7 @@ import {
   POST_NEW_STUDENTCOURSE,
   PUT_TEACHER,
   PUT_STUDENT,
+  PUT_COURSE,
 } from "../../utils/constants";
 
 import { get, post, getId, put } from "../actions/crudActions";
@@ -106,6 +107,9 @@ export const startPutItem = (itemType, id, body) => async (dispatch) => {
       break;
     case TEACHER_PATH:
       dispatch(post(response, PUT_TEACHER));
+      break;
+    case COURSE_PATH:
+      dispatch(post(response, PUT_COURSE));
       break;
     default:
       break;

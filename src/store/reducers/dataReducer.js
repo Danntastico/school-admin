@@ -170,7 +170,7 @@ export const dataReducer = (state = initialState, action) => {
             id: action.payload.id,
             name: action.payload.name,
             year: action.payload.year,
-            teacherId: action.payload.teacher_id,
+            teacher_id: action.payload.teacher_id,
           },
         },
       };

@@ -28,7 +28,7 @@ export const courseInformationFields = [
     label: "Name",
   },
   {
-    name: "teacherId",
+    name: "teacher_id",
     fieldType: "select",
     label: "Teacher",
   },
