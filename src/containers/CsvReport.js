@@ -8,7 +8,7 @@ export const CsvReport = () => {
   const { csvReport } = useSelector((state) => state.root);
   const { data, headers } = csvReport;
   const [downloadIsReady, setDownloadIsReady] = useState(false);
-  console.log(data);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -31,7 +31,7 @@ export const CsvReport = () => {
       {downloadIsReady && (
         <CSVLink
           onClick={handleFetch}
-          filename={`${new Date().getDate()}_report.csv`}
+          filename={`${new Date()}_report.csv`}
           data={data}
           headers={headers}
         >
