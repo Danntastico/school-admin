@@ -165,7 +165,7 @@ export const startDeleteItem = (itemType, id) => async (dispatch) => {
   });
 };
 
-export const startReceiveCSVDataAndReset = (csvRunData) => async (dispatch) => {
+export const startReceiveCSVData = () => async (dispatch) => {
   const studentsCourses = await getAllItems(STUDENTCOURSES_PATH);
   const teachers = await getAllItems(TEACHER_PATH);
   const students = await getAllItems(STUDENT_PATH);
