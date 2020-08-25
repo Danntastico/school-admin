@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { InformationCard } from "../../components/InformationCard";
 import { personInformationFields } from "../../utils/fieldsList";
 import { Field } from "../../components/common/Field";

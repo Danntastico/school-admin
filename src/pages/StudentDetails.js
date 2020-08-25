@@ -6,6 +6,7 @@ import { PersonInfoCard } from "../containers/InfoCards/PersonInfoCard";
 import { useParams } from "@reach/router";
 import { STUDENT_PATH } from "../utils/constants";
 import { startGetItemById } from "../store/middlewares";
+import Loader from "react-loader-spinner";
 
 export const StudentDetails = () => {
   const { id } = useParams();
@@ -36,7 +37,7 @@ export const StudentDetails = () => {
               title="Student Information"
             />
           ) : (
-            <h2>Loading...</h2>
+            <Loader type="Circles" color="#f5cb5c" height={80} width={80} />
           )}
         </CardContainer>
       </div>

@@ -6,6 +6,7 @@ import { useParams } from "@reach/router";
 import { useSelector, useDispatch } from "react-redux";
 import { TEACHER_PATH } from "../utils/constants";
 import { startGetItemById } from "../store/middlewares";
+import Loader from "react-loader-spinner";
 
 export const TeacherDetails = () => {
   const { id } = useParams();
@@ -29,7 +30,7 @@ export const TeacherDetails = () => {
               title="Teacher Information"
             />
           ) : (
-            <h2>Loading</h2>
+            <Loader type="Circles" color="#f5cb5c" height={80} width={80} />
           )}
         </CardContainer>
       </div>
