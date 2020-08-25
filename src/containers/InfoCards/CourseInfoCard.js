@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { useInput } from "../../hooks/useInput";
 import { Form } from "../../components/common/Form";
 import { courseInformationFields } from "../../utils/fieldsList";
@@ -10,24 +11,45 @@ import {
 } from "../../components/InformationCard";
 
 export const CourseInfoCard = () => {
+  const { teachers } = useSelector((state) => state.root);
+  const { data: teachersList } = teachers;
+
   const [values, handleInputChange, reset] = useInput({});
   const [isEditable, setIsEditable] = useState(false);
 
   const handleOnEditClick = () => {
     setIsEditable(!isEditable);
   };
+  const renderFields = () =>
+    courseInformationFields.map((i) =>
+      i.fieldType === "select" ? (
+        <Field
+          key={i.name}
+          value={values[i.name]}
+          handleInputChange={handleInputChange}
+          {...i}
+        >
+          <option> </option>
+          {teachersList.map((teacher) => (
+            <option value={teacher.id}>
+              {teacher.firstName} {teacher.lastName}
+            </option>
+          ))}
+        </Field>
+      ) : (
+        <Field
+          key={i.name}
+          value={values[i.value]}
+          handleInputChange={handleInputChange}
+          {...i}
+        />
+      )
+    );
   const renderForm = () => {
     return (
       <>
         <Form hideHeader>
-          {courseInformationFields.map((i) => (
-            <Field
-              key={i.name}
-              value={values[i.value]}
-              handleInputChange={handleInputChange}
-              {...i}
-            />
-          ))}
+          {renderFields()}
           <Button />
         </Form>
       </>

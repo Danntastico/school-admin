@@ -23,7 +23,7 @@ export const FormNewCourse = ({
   }, []);
 
   return (
-    <Form onSubmit={handleSubmit} title={`Register a new ${PATH}`}>
+    <Form onSubmit={handleSubmit} title={`Register a new course`}>
       {fields.map((i) =>
         i.fieldType === "select" ? (
           <Field
