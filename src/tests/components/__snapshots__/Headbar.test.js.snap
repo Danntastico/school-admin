@@ -5,5 +5,6 @@ exports[`Unit test to <Headbar /> Should show the component correctly (shallow) 
   <h3>
     Testing the Headbar Title
   </h3>
+  <CsvReport />
 </styled.header>
 `;

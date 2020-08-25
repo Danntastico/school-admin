@@ -2,7 +2,7 @@
 
 exports[`Unit testing for Button Component Should show correctly 1`] = `
 <button
-  className="sc-AxjAm kKWaTD"
+  className="sc-AxjAm WiIod"
   onClick={[MockFunction]}
 >
   Test Btn
