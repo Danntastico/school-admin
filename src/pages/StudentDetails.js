@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Headbar } from "../components/Headbar";
 import { CardContainer } from "../styles/CardContainer";
 import {
@@ -9,13 +9,11 @@ import { Form } from "../components/common/Form";
 import { Field } from "../components/common/Field";
 import { personInformationFields } from "../utils/fieldsList";
 import { useInput } from "../hooks/useInput";
-import { useSelector } from "react-redux";
 import { Button } from "../components/common/Button";
 
 export const StudentDetails = () => {
-  const [isEditable, setIsEditable] = useState(false);
-  const { students } = useSelector((state) => state.root);
   const [values, handleInputChange, reset] = useInput({});
+  const [isEditable, setIsEditable] = useState(false);
 
   const handleOnEditClick = () => {
     setIsEditable(!isEditable);
