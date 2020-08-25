@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { fadeIn } from "../../styles/anitmation";
 
 export const CardContent = styled.div`
   margin: 50px 10px;
@@ -26,5 +27,20 @@ export const HeaderInfoCard = styled.div`
   }
 `;
 export const BodyInfoCard = styled.div`
+  ${fadeIn}
   margin: 20px 0;
+`;
+
+export const InfoCardItem = styled.div`
+  width: 100%;
+  margin: 20px 0;
+
+  > h3 {
+    font-size: 14px;
+    font-weight: 100;
+    margin-bottom: 5px;
+  }
+  > p {
+    border-bottom: solid 1px var(--secondary-color);
+  }
 `;
