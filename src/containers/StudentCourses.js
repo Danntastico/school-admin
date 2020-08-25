@@ -4,13 +4,12 @@ import { List } from "../components/common/List";
 import { Item } from "../components/common/Item";
 import { useModal } from "../hooks/useModal";
 import { ModalContainer } from "./ModalContainer";
-import { AddItemForm } from "./AddItemForm";
 import { Form } from "../components/common/Form";
 import { Field } from "../components/common/Field";
 import { useSelector, useDispatch } from "react-redux";
 import { useInput } from "../hooks/useInput";
-import { startGetAllItems, startPostItem } from "../store/middlewares";
-import { COURSE_PATH, STUDENTCOURSES_PATH } from "../utils/constants";
+import { startPostItem } from "../store/middlewares";
+import { STUDENTCOURSES_PATH } from "../utils/constants";
 const assiggnationFields = [
   {
     name: "id_course",

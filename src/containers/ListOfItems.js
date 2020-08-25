@@ -1,8 +1,5 @@
 import React from "react";
-import { useDispatch } from "react-redux";
 import { useNavigate } from "@reach/router";
-
-import { startGetItemById } from "../store/middlewares";
 import { List } from "../components/common/List";
 import { Item } from "../components/common/Item";
 
