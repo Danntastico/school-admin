@@ -3,13 +3,14 @@ import { Headbar } from "../components/Headbar";
 import { useModal } from "../hooks/useModal";
 import { personInformationFields, initialState } from "../utils/fieldsList";
 import { CardContainer } from "../styles/CardContainer";
-import { TEACHER_PATH } from "../utils/constants";
+import { TEACHER_PATH, CLEAR_ACTIVE_TEACHER } from "../utils/constants";
 import { ModalContainer } from "../containers/ModalContainer";
 import { useSelector, useDispatch } from "react-redux";
 import { startGetAllItems, startPostItem } from "../store/middlewares";
 import { ListOfItems } from "../containers/ListOfItems";
 import { useInput } from "../hooks/useInput";
 import { FormNewPerson } from "../containers/FormNewPerson";
+import { clearActiveItem } from "../store/actions/crudActions";
 
 export const Teachers = () => {
   const [isModalOpen, openModal, closeModal] = useModal();
@@ -21,6 +22,7 @@ export const Teachers = () => {
 
   useEffect(() => {
     dispatch(startGetAllItems(TEACHER_PATH));
+    dispatch(clearActiveItem(CLEAR_ACTIVE_TEACHER));
   }, [dispatch]);
 
   const handleCloseModal = () => {

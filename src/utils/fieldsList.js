@@ -28,7 +28,7 @@ export const courseInformationFields = [
     label: "Name",
   },
   {
-    name: "teacher_id",
+    name: "teacherId",
     fieldType: "select",
     label: "Teacher",
   },
@@ -49,6 +49,19 @@ export const courseFields = [
     name: "teacher_id",
     fieldType: "select",
     label: "Assign to a Teacher",
+  },
+];
+
+export const assignSubjectToStudent = [
+  {
+    name: "id_course",
+    fieldType: "select",
+    label: "Available subjects ",
+  },
+  {
+    name: "calification",
+    inputType: "number",
+    label: "Final Note",
   },
 ];
 

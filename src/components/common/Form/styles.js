@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const FormHeader = styled.div`
   align-items: center;
@@ -16,12 +16,13 @@ export const FormTitle = styled.h2`
 `;
 
 export const FormBody = styled.div`
-  padding: 0 30px;
+  padding: 0 10px;
   margin: 20px 0;
 `;
 
 export const FormFooter = styled.div`
-  padding: 0 30px;
+  padding: 0 10px;
+  align-items: center;
 `;
 
 export const EditBtn = styled.button`

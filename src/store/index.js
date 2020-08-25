@@ -1,5 +1,6 @@
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import { persistStore, persistReducer } from "redux-persist";
+import hardSet from "redux-persist/lib/stateReconciler/hardSet";
 import { dataReducer } from "./reducers/dataReducer";
 import storage from "redux-persist/lib/storage";
 import thunk from "redux-thunk";
@@ -7,6 +8,7 @@ import thunk from "redux-thunk";
 const persistConfig = {
   key: "root",
   storage,
+  whitelist: ["navigation"],
 };
 
 const composeEnhancers =
@@ -21,7 +23,7 @@ const reducers = combineReducers({
 const persistedReducer = persistReducer(persistConfig, reducers);
 
 export const store = createStore(
-  persistedReducer,
+  reducers,
   composeEnhancers(applyMiddleware(thunk))
 );
 

@@ -5,12 +5,13 @@ import { useModal } from "../hooks/useModal";
 import { ModalContainer } from "../containers/ModalContainer";
 import { CardContainer } from "../styles/CardContainer";
 import { ListOfItems } from "../containers/ListOfItems";
-import { COURSE_PATH } from "../utils/constants";
+import { COURSE_PATH, CLEAR_ACTIVE_COURSE } from "../utils/constants";
 import { useSelector, useDispatch } from "react-redux";
 import { startGetAllItems } from "../store/middlewares";
 import { courseFields } from "../utils/fieldsList";
 import { useInput } from "../hooks/useInput";
 import { FormNewCourse } from "../containers/FormNewCourse";
+import { clearActiveItem } from "../store/actions/crudActions";
 
 export const Courses = () => {
   const { courses } = useSelector((state) => state.root);
@@ -28,6 +29,7 @@ export const Courses = () => {
 
   useEffect(() => {
     dispatch(startGetAllItems(COURSE_PATH));
+    dispatch(clearActiveItem(CLEAR_ACTIVE_COURSE));
   }, [dispatch]);
   const handleCloseModal = () => {
     closeModal();

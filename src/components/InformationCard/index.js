@@ -5,11 +5,23 @@ import {
   BodyInfoCard,
   InfoCardItem,
 } from "./styles";
-export const InformationCard = ({ title, handleOnEditClick, children }) => (
+import { Button } from "../common/Button";
+export const InformationCard = ({
+  title,
+  handleOnClick,
+  children,
+  hasBtn,
+  isEdit,
+}) => (
   <CardContent>
     <HeaderInfoCard>
       <h3>{title}</h3>
-      <button onClick={handleOnEditClick}>Edit</button>
+      {hasBtn &&
+        (isEdit ? (
+          <button onClick={handleOnClick}>Edit</button>
+        ) : (
+          <Button onClick={handleOnClick} label="Assign " />
+        ))}
     </HeaderInfoCard>
     <BodyInfoCard>{children}</BodyInfoCard>
   </CardContent>

@@ -10,20 +10,24 @@ import {
   POST_NEW_TEACHER,
   POST_NEW_COURSE,
   GET_STUDENTCOURSES_BY_ID,
+  CLEAR_ACTIVE_TEACHER,
+  CLEAR_ACTIVE_COURSE,
+  CLEAR_ACTIVE_STUDENT,
+  GET_COURSE_BY_ID,
 } from "../../utils/constants";
 
 const initialState = {
   teachers: {
     data: [],
-    activeTeacher: {},
+    activeTeacher: null,
   },
   students: {
     data: [],
-    activeStudent: {},
+    activeStudent: null,
   },
   courses: {
     data: [],
-    activeCourse: {},
+    activeCourse: null,
   },
   studentsCourses: {
     data: [],
@@ -61,7 +65,7 @@ export const dataReducer = (state = initialState, action) => {
           data: [action.payload, ...state.students.data],
         },
       };
-    case GET_STUDENT_BY_ID: {
+    case GET_STUDENT_BY_ID:
       return {
         ...state,
         students: {
@@ -79,7 +83,15 @@ export const dataReducer = (state = initialState, action) => {
           },
         },
       };
-    }
+
+    case CLEAR_ACTIVE_STUDENT:
+      return {
+        ...state,
+        students: {
+          ...state.students,
+          activeStudent: null,
+        },
+      };
     case GET_ALL_TEACHERS:
       return {
         ...state,
@@ -118,13 +130,18 @@ export const dataReducer = (state = initialState, action) => {
             lastName: action.payload.lastName,
             age: action.payload.age,
             address: action.payload.address,
-            courses: action.payload.stuntendsCourse.map((item) => ({
-              course: item.course.name,
-              calification: item.calification,
-            })),
           },
         },
       };
+    case CLEAR_ACTIVE_TEACHER:
+      return {
+        ...state,
+        teachers: {
+          ...state.teachers,
+          activeTeacher: null,
+        },
+      };
+
     case GET_ALL_COURSES:
       return {
         ...state,
@@ -142,6 +159,27 @@ export const dataReducer = (state = initialState, action) => {
               course: item.course.name,
             })),
           })),
+        },
+      };
+    case GET_COURSE_BY_ID:
+      return {
+        ...state,
+        courses: {
+          ...state.courses,
+          activeCourse: {
+            id: action.payload.id,
+            name: action.payload.name,
+            year: action.payload.year,
+            teacherId: action.payload.teacher_id,
+          },
+        },
+      };
+    case CLEAR_ACTIVE_COURSE:
+      return {
+        ...state,
+        courses: {
+          ...state.courses,
+          activeCourse: null,
         },
       };
     case POST_NEW_COURSE:
