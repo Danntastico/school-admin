@@ -18,7 +18,7 @@ export const CourseInfoCard = ({ activeCourse }) => {
   useEffect(() => {
     dispatch(startGetAllItems(TEACHER_PATH));
   }, []);
-  console.log(activeCourse);
+
   const renderFields = () =>
     courseInformationFields.map((i) =>
       i.fieldType === "select" ? (

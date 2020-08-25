@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { startGetItemById } from "../store/middlewares";
 import { COURSE_PATH } from "../utils/constants";
 import Loader from "react-loader-spinner";
+import { CoursingStudents } from "../containers/SubjectsCards/CoursingStudents";
 
 export const CourseDetails = () => {
   const { id } = useParams();
@@ -27,6 +28,7 @@ export const CourseDetails = () => {
           ) : (
             <Loader type="Circles" color="#f5cb5c" height={80} width={80} />
           )}
+          <CoursingStudents id={id} />
         </CardContainer>
       </div>
     </div>
